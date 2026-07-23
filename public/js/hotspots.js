@@ -2,8 +2,8 @@ let map;
 
 document.addEventListener('DOMContentLoaded', async () => {
   map = L.map('map').setView([14.5, 76.5], 7);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap contributors, © CARTO'
   }).addTo(map);
 
   const [firsRes, hotspotsRes] = await Promise.all([
@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   firs.forEach(fir => {
     const isHotspot = hotspotFirIds.has(fir.id);
-    const color = isHotspot ? '#C8202F' : '#1A73E8';
+    const color = isHotspot ? '#F43F5E' : '#38BDF8';
     const marker = L.circleMarker([fir.lat, fir.lng], {
-      radius: isHotspot ? 10 : 6,
+      radius: isHotspot ? 12 : 7,
       fillColor: color,
-      color: '#fff',
-      weight: 1,
-      fillOpacity: 0.85
+      color: color,
+      weight: isHotspot ? 3 : 2,
+      fillOpacity: isHotspot ? 0.6 : 0.4
     }).addTo(map);
 
     marker.bindPopup(`

@@ -81,18 +81,38 @@
 
   const chartOpts = {
     responsive: true,
-    plugins: { legend: { labels: { color: '#94a3b8' } } },
+    plugins: { 
+      legend: { labels: { color: '#94a3b8', font: { family: "'Plus Jakarta Sans', sans-serif" } } },
+      tooltip: { 
+        backgroundColor: 'rgba(16, 22, 35, 0.9)', 
+        titleColor: '#F8FAFC', 
+        bodyColor: '#94a3b8',
+        borderColor: 'rgba(255,255,255,0.1)',
+        borderWidth: 1,
+        padding: 10
+      }
+    },
     scales: {
-      x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
-      y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } }
+      x: { ticks: { color: '#94a3b8', font: { family: "'Plus Jakarta Sans', sans-serif" } }, grid: { color: 'rgba(255,255,255,0.03)', drawBorder: false } },
+      y: { ticks: { color: '#94a3b8', font: { family: "'Plus Jakarta Sans', sans-serif" } }, grid: { color: 'rgba(255,255,255,0.03)', drawBorder: false } }
     }
   };
+
+  const ctxTrend = document.getElementById('chart-trend').getContext('2d');
+  const gradientBlue = ctxTrend.createLinearGradient(0, 0, 0, 400);
+  gradientBlue.addColorStop(0, 'rgba(56, 189, 248, 0.4)');
+  gradientBlue.addColorStop(1, 'rgba(56, 189, 248, 0.01)');
+
+  const ctxType = document.getElementById('chart-type').getContext('2d');
+  const gradientRose = ctxType.createLinearGradient(0, 0, 0, 400);
+  gradientRose.addColorStop(0, '#F43F5E');
+  gradientRose.addColorStop(1, 'rgba(244, 63, 94, 0.2)');
 
   new Chart(document.getElementById('chart-type'), {
     type: 'bar',
     data: {
       labels: Object.keys(crimesByType),
-      datasets: [{ label: 'Cases', data: Object.values(crimesByType), backgroundColor: '#C8202F' }]
+      datasets: [{ label: 'Cases', data: Object.values(crimesByType), backgroundColor: gradientRose, borderRadius: 4 }]
     },
     options: chartOpts
   });
@@ -101,7 +121,7 @@
     type: 'bar',
     data: {
       labels: Object.keys(crimesByDistrict),
-      datasets: [{ label: 'Cases', data: Object.values(crimesByDistrict), backgroundColor: '#1A73E8' }]
+      datasets: [{ label: 'Cases', data: Object.values(crimesByDistrict), backgroundColor: '#38BDF8', borderRadius: 4 }]
     },
     options: { ...chartOpts, indexAxis: 'y' }
   });
@@ -110,7 +130,20 @@
     type: 'line',
     data: {
       labels: Object.keys(monthlyTrend).sort(),
-      datasets: [{ label: 'FIRs', data: Object.keys(monthlyTrend).sort().map(k => monthlyTrend[k]), borderColor: '#1A73E8', backgroundColor: 'rgba(26,115,232,0.1)', fill: true, tension: 0.3 }]
+      datasets: [{ 
+        label: 'FIRs', 
+        data: Object.keys(monthlyTrend).sort().map(k => monthlyTrend[k]), 
+        borderColor: '#38BDF8', 
+        backgroundColor: gradientBlue, 
+        fill: true, 
+        tension: 0.4,
+        borderWidth: 2,
+        pointBackgroundColor: '#060913',
+        pointBorderColor: '#38BDF8',
+        pointBorderWidth: 2,
+        pointRadius: 4,
+        pointHoverRadius: 6
+      }]
     },
     options: chartOpts
   });

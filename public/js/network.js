@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     label: n.label.split(' ')[0],
     title: `${n.label}\nRisk: ${n.risk_score}\nDistrict: ${n.district}`,
     color: {
-      background: n.risk_score >= 80 ? '#C8202F' : n.risk_score >= 60 ? '#F59E0B' : '#1A73E8',
-      border: '#fff',
-      highlight: { background: '#1A73E8', border: '#fff' }
+      background: n.risk_score >= 80 ? '#F43F5E' : n.risk_score >= 60 ? '#FBBF24' : '#38BDF8',
+      border: n.risk_score >= 80 ? 'rgba(244,63,94,0.3)' : n.risk_score >= 60 ? 'rgba(251,191,36,0.3)' : 'rgba(56,189,248,0.3)',
+      highlight: { background: '#38BDF8', border: 'rgba(56,189,248,0.8)' }
     },
-    font: { color: '#F1F5F9', size: 12 },
-    borderWidth: 2
+    font: { color: '#F8FAFC', size: 12, face: 'Plus Jakarta Sans' },
+    borderWidth: 4
   })));
 
   const edges = new vis.DataSet(data.edges.map(e => {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       from: e.from,
       to: e.to,
       title: `FIR #${e.connected_via_fir}\nLast seen: ${e.last_seen_date}`,
-      color: { color: `rgba(26, 115, 232, ${opacity})`, opacity },
+      color: { color: `rgba(56, 189, 248, ${opacity})`, opacity, highlight: '#7dd3fc' },
       width,
       dashes: days > 60,
       _meta: e
