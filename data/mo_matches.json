@@ -1,0 +1,116 @@
+[
+  {
+    "id": "MO-001",
+    "fir_id_1": "FIR-2025-001",
+    "fir_id_2": "FIR-2025-002",
+    "similarity_score": 0.94,
+    "reason": "Identical two-wheeler chain snatching MO: pillion rider grab, rapid escape via main road",
+    "mo_snippet_1": "Two accused on a black Pulsar 150 approached victim from behind on a two-wheeler, snatched gold chain and fled towards Hosur Road.",
+    "mo_snippet_2": "Pillion rider on a dark-coloured motorcycle grabbed the victim's gold chain while riding past and escaped via Ring Road.",
+    "reasoning_weights": {
+      "location_proximity": 0.15,
+      "mo_text_similarity": 0.55,
+      "time_window": 0.15,
+      "vehicle_description": 0.15
+    }
+  },
+  {
+    "id": "MO-002",
+    "fir_id_1": "FIR-2025-001",
+    "fir_id_2": "FIR-2025-018",
+    "similarity_score": 0.91,
+    "reason": "Same black Pulsar 150 MO, pillion snatch pattern in Bengaluru Urban cluster",
+    "mo_snippet_1": "Two accused on a black Pulsar 150 approached victim from behind on a two-wheeler, snatched gold chain and fled towards Hosur Road.",
+    "mo_snippet_2": "Early morning chain snatch by duo on black Pulsar. Victim walking to bus stop, suspects fled towards railway underpass.",
+    "reasoning_weights": {
+      "location_proximity": 0.30,
+      "mo_text_similarity": 0.55,
+      "time_window": 0.15
+    }
+  },
+  {
+    "id": "MO-003",
+    "fir_id_1": "FIR-2025-002",
+    "fir_id_2": "FIR-2025-014",
+    "similarity_score": 0.87,
+    "reason": "Cross-district chain snatching: Mysuru market area pattern matches Vijayanagar MO",
+    "mo_snippet_1": "Pillion rider on a dark-coloured motorcycle grabbed the victim's gold chain while riding past and escaped via Ring Road.",
+    "mo_snippet_2": "Chain snatching by two-wheeler riders near crowded market. Gold chain worth ₹1.2L taken.",
+    "reasoning_weights": {
+      "location_proximity": 0.20,
+      "mo_text_similarity": 0.50,
+      "time_window": 0.30
+    }
+  },
+  {
+    "id": "MO-004",
+    "fir_id_1": "FIR-2025-004",
+    "fir_id_2": "FIR-2025-010",
+    "similarity_score": 0.89,
+    "reason": "Burglary MO match: rear window entry, wall climb, jewellery target in Mangaluru",
+    "mo_snippet_1": "Rear window forced open at night, jewellery and cash stolen. Entry via compound wall climb, exit through back lane.",
+    "mo_snippet_2": "Night burglary via rear window. Jewellery box emptied. Similar pattern to Bejai case — wall climb entry.",
+    "reasoning_weights": {
+      "location_proximity": 0.30,
+      "mo_text_similarity": 0.55,
+      "time_window": 0.15
+    }
+  },
+  {
+    "id": "MO-005",
+    "fir_id_1": "FIR-2025-007",
+    "fir_id_2": "FIR-2025-027",
+    "similarity_score": 0.82,
+    "reason": "Daytime Bengaluru burglary series: lock picking, electronics theft when occupants away",
+    "mo_snippet_1": "Daytime burglary when occupants away. Front door lock picked, laptops and electronics taken.",
+    "mo_snippet_2": "Villa burglary. CCTV disabled before entry. Laptops and jewellery stolen — 3rd similar case in area this month.",
+    "reasoning_weights": {
+      "location_proximity": 0.25,
+      "mo_text_similarity": 0.50,
+      "time_window": 0.25
+    }
+  },
+  {
+    "id": "MO-006",
+    "fir_id_1": "FIR-2025-006",
+    "fir_id_2": "FIR-2025-011",
+    "similarity_score": 0.78,
+    "reason": "Inter-district chain snatch: Belagavi to Hubballi, black bike no helmet pattern",
+    "mo_snippet_1": "Two-wheeler duo snatched chain near market area. Black bike, no helmet, fled towards NH-48.",
+    "mo_snippet_2": "Two men on motorcycle snatched chain near bus stand. Victim dragged briefly, suspects fled towards Dharwad.",
+    "reasoning_weights": {
+      "location_proximity": 0.10,
+      "mo_text_similarity": 0.55,
+      "time_window": 0.20,
+      "vehicle_description": 0.15
+    }
+  },
+  {
+    "id": "MO-007",
+    "fir_id_1": "FIR-2025-003",
+    "fir_id_2": "FIR-2025-008",
+    "similarity_score": 0.85,
+    "reason": "Two-wheeler theft MO: ignition tampering, Activa target, grey hoodie suspect",
+    "mo_snippet_1": "Unidentified person broke the ignition lock of a parked Honda Activa and fled within 2 minutes during evening rush hour.",
+    "mo_snippet_2": "Activa stolen from parking near temple. Ignition tampered, CCTV shows suspect in grey hoodie.",
+    "reasoning_weights": {
+      "location_proximity": 0.15,
+      "mo_text_similarity": 0.60,
+      "time_window": 0.25
+    }
+  },
+  {
+    "id": "MO-008",
+    "fir_id_1": "FIR-2025-024",
+    "fir_id_2": "FIR-2025-033",
+    "similarity_score": 0.88,
+    "reason": "Organized burglary gang MO: gated community entry, safe/electronics target",
+    "mo_snippet_1": "Apartment burglary during festival outing. Safe broken, documents and cash taken.",
+    "mo_snippet_2": "Flat burglary in gated community. Security bypassed via service lift. Same gang suspected as Jayanagar series.",
+    "reasoning_weights": {
+      "location_proximity": 0.30,
+      "mo_text_similarity": 0.45,
+      "time_window": 0.25
+    }
+  }
+]

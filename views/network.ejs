@@ -1,0 +1,19 @@
+<%- include('partials/head', { page: 'network', title: 'Criminal Network Graph', extraHead: '<link href="https://unpkg.com/vis-network@9.1.9/styles/vis-network.min.css" rel="stylesheet">' }) %>
+<%- include('partials/nav', { role: role || 'investigator', page }) %>
+
+<div class="page-header">
+  <div>
+    <h1>Criminal Network Graph</h1>
+    <span class="zoho-label">Zoho Analytics — Relationship Intelligence</span>
+  </div>
+</div>
+
+<div class="network-layout">
+  <div id="network-graph" class="network-canvas"></div>
+  <aside id="network-panel" class="network-sidebar panel hidden">
+    <h3 id="panel-title">Details</h3>
+    <div id="panel-content"></div>
+  </aside>
+</div>
+
+<%- include('partials/footer', { extraScripts: '<script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script><script src="/js/network.js"></script>' }) %>

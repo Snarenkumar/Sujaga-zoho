@@ -1,0 +1,20 @@
+<footer class="site-footer">
+  🔒 Zero data leaves Zoho's private cloud · No third-party AI calls
+</footer>
+
+<div id="evidence-modal" class="modal hidden">
+  <div class="modal-backdrop" onclick="closeEvidenceModal()"></div>
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h2>Evidence Trail — Court-Ready Audit Log</h2>
+      <span class="zoho-label">Zoho Catalyst function log</span>
+      <button class="modal-close" onclick="closeEvidenceModal()">&times;</button>
+    </div>
+    <div id="evidence-content" class="modal-body"></div>
+  </div>
+</div>
+
+<script src="/js/common.js"></script>
+<%- typeof extraScripts !== 'undefined' ? extraScripts : '' %>
+</body>
+</html>

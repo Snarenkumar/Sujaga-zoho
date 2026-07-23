@@ -1,0 +1,35 @@
+<%- include('partials/head', { page: 'home' }) %>
+<div class="landing">
+  <div class="landing-card">
+    <div class="landing-brand">
+      <h1 class="landing-title">Welcome to Sujaga</h1>
+      <div class="landing-logo">
+        <span class="logo-en large">Sujaga</span>
+        <span class="logo-kn large">ಸುಜಾಗ</span>
+      </div>
+      <p class="tagline">Sujaga — Karnataka Police Crime Intelligence, Built to Notice First.</p>
+      <span class="zoho-badge directory">Zoho Directory — Role-Based Access</span>
+    </div>
+
+    <h2 class="role-heading">Select your role</h2>
+    <div class="role-grid">
+      <a href="/fir/entry" class="role-card">
+        <div class="role-icon">📝</div>
+        <h3>Data Entry Staff</h3>
+        <p>Register FIRs via Zoho Creator. Live MO matching on submit.</p>
+      </a>
+      <a href="/chat" class="role-card">
+        <div class="role-icon">🔍</div>
+        <h3>Investigator</h3>
+        <p>Query cases with Zia Assistant. Network analysis & evidence trails.</p>
+      </a>
+      <a href="/dashboard?role=supervisor" class="role-card featured">
+        <div class="role-icon">📊</div>
+        <h3>Supervisor</h3>
+        <p>Command center dashboard. Analytics, risk scoreboard, hotspots.</p>
+      </a>
+    </div>
+    <p class="landing-footer-note">⚡ Sujaga — Built on Zoho · Karnataka State Police Prototype</p>
+  </div>
+</div>
+<%- include('partials/footer') %>

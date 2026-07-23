@@ -1,0 +1,134 @@
+<%- include('partials/head', { page: 'dashboard', title: 'Supervisor Dashboard' }) %>
+<%- include('partials/nav', { role, page }) %>
+
+<div class="page-header">
+  <div>
+    <h1>Supervisor Command Center</h1>
+    <span class="zoho-label">Zoho Analytics + Ask Zia</span>
+  </div>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <span class="stat-label">Total FIRs</span>
+    <span class="stat-value"><%= stats.totalFirs %></span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Open Cases</span>
+    <span class="stat-value amber"><%= stats.openCases %></span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">High-Risk Offenders</span>
+    <span class="stat-value red"><%= stats.highRiskOffenders %></span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Cross-District Matches</span>
+    <span class="stat-value blue"><%= stats.crossDistrictMatches %></span>
+  </div>
+</div>
+
+<div class="chart-grid">
+  <div class="panel">
+    <h3>Crimes by Type</h3>
+    <canvas id="chart-type"></canvas>
+  </div>
+  <div class="panel">
+    <h3>Crimes by District</h3>
+    <canvas id="chart-district"></canvas>
+  </div>
+  <div class="panel wide">
+    <h3>Monthly Trend</h3>
+    <canvas id="chart-trend"></canvas>
+  </div>
+</div>
+
+<div class="panel">
+  <h3>Risk Scoreboard</h3>
+  <div class="table-wrap">
+    <table class="data-table" id="risk-table">
+      <thead>
+        <tr>
+          <th data-sort="name">Accused Name</th>
+          <th data-sort="district">District</th>
+          <th data-sort="risk">Risk Score</th>
+          <th data-sort="associates">Known Associates</th>
+          <th>Linked FIRs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% accusedSorted.forEach(a => {
+          const level = a.risk_score >= 80 ? 'high' : a.risk_score >= 60 ? 'med' : 'low';
+        %>
+        <tr>
+          <td><strong><%= a.name %></strong><br><small class="muted"><%= a.alias %></small></td>
+          <td><%= a.district %></td>
+          <td><span class="badge badge-<%= level %>"><%= a.risk_score %></span></td>
+          <td><%= a.known_associate_ids.length %></td>
+          <td><%= a.linked_fir_ids.length %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/footer', { extraScripts: `
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+  const crimesByType = ${JSON.stringify(crimesByType)};
+  const crimesByDistrict = ${JSON.stringify(crimesByDistrict)};
+  const monthlyTrend = ${JSON.stringify(monthlyTrend)};
+
+  const chartOpts = {
+    responsive: true,
+    plugins: { legend: { labels: { color: '#94a3b8' } } },
+    scales: {
+      x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+      y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } }
+    }
+  };
+
+  new Chart(document.getElementById('chart-type'), {
+    type: 'bar',
+    data: {
+      labels: Object.keys(crimesByType),
+      datasets: [{ label: 'Cases', data: Object.values(crimesByType), backgroundColor: '#C8202F' }]
+    },
+    options: chartOpts
+  });
+
+  new Chart(document.getElementById('chart-district'), {
+    type: 'bar',
+    data: {
+      labels: Object.keys(crimesByDistrict),
+      datasets: [{ label: 'Cases', data: Object.values(crimesByDistrict), backgroundColor: '#1A73E8' }]
+    },
+    options: { ...chartOpts, indexAxis: 'y' }
+  });
+
+  new Chart(document.getElementById('chart-trend'), {
+    type: 'line',
+    data: {
+      labels: Object.keys(monthlyTrend).sort(),
+      datasets: [{ label: 'FIRs', data: Object.keys(monthlyTrend).sort().map(k => monthlyTrend[k]), borderColor: '#1A73E8', backgroundColor: 'rgba(26,115,232,0.1)', fill: true, tension: 0.3 }]
+    },
+    options: chartOpts
+  });
+
+  document.querySelectorAll('#risk-table th[data-sort]').forEach(th => {
+    th.style.cursor = 'pointer';
+    th.addEventListener('click', () => {
+      const key = th.dataset.sort;
+      const tbody = document.querySelector('#risk-table tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      const idx = { name: 0, district: 1, risk: 2, associates: 3 }[key];
+      rows.sort((a, b) => {
+        let av = a.children[idx].innerText, bv = b.children[idx].innerText;
+        if (key === 'risk' || key === 'associates') return parseInt(bv) - parseInt(av);
+        return av.localeCompare(bv);
+      });
+      rows.forEach(r => tbody.appendChild(r));
+    });
+  });
+</script>
+` }) %>

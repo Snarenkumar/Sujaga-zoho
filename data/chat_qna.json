@@ -1,0 +1,67 @@
+[
+  {
+    "intent": "chain_snatching_mysuru",
+    "keywords": ["chain", "snatch", "mysuru", "month", "ಚains", "mysore"],
+    "answer_en": "Found **4 chain snatching cases** in Mysuru this month:\n\n• **FIR-2025-002** — Vijayanagar PS, 05 Jul (94% MO match with Bengaluru case)\n• **FIR-2025-014** — Devaraja Market, 20 Jul\n• **FIR-2025-026** — Udyambag (Belagavi, linked accused)\n• **FIR-2025-016** — Mangaluru (cross-ref)\n\nTop suspect: **Manjunath G** (ACC-003), risk score 85.",
+    "answer_kn": "ಈ ತಿಂಗಳಲ್ಲಿ ಮೈಸೂರಿನಲ್ಲಿ **4 ಸರಪಳಿ ಕದ್ದ ಪ್ರಕರಣಗಳು** ಕಂಡುಬಂದಿವೆ:\n\n• **FIR-2025-002** — ವಿಜಯನಗರ PS, 05 Jul\n• **FIR-2025-014** — ದೇವರಾಜ ಮಾರುಕಟ್ಟೆ, 20 Jul\n\nಪ್ರಮುಖ ಸಂಶಯಿತ: **Manjunath G** (ACC-003), ಅಪಾಯ ಸ್ಕೋರ್ 85.",
+    "related_fir_ids": ["FIR-2025-002", "FIR-2025-014"],
+    "match_id": "MO-001"
+  },
+  {
+    "intent": "highest_risk",
+    "keywords": ["risk", "highest", "accused", "dangerous", "score", "ಅಪಾಯ"],
+    "answer_en": "**Top 5 High-Risk Offenders** (by risk score):\n\n1. **Ravi Kumar M** (ACC-001) — Bengaluru Urban — **92** — 6 linked FIRs\n2. **Suresh Babu K** (ACC-002) — Bengaluru Urban — **88** — 6 linked FIRs\n3. **Manjunath G** (ACC-003) — Mysuru — **85** — 5 linked FIRs\n4. **Ganesh Murthy** (ACC-005) — Mangaluru — **78** — 8 linked FIRs\n5. **Deepak Shetty** (ACC-006) — Mangaluru — **75** — 7 linked FIRs",
+    "answer_kn": "**ಅತ್ಯಧಿಕ ಅಪಾಯದ ಆರೋಪಿಗಳು:**\n\n1. **Ravi Kumar M** — Bengaluru — ಸ್ಕೋರ್ **92**\n2. **Suresh Babu K** — Bengaluru — ಸ್ಕೋರ್ **88**\n3. **Manjunath G** — Mysuru — ಸ್ಕೋರ್ **85**",
+    "related_fir_ids": ["FIR-2025-001", "FIR-2025-018"],
+    "match_id": null
+  },
+  {
+    "intent": "repeat_mo",
+    "keywords": ["repeat", "mo", "similar", "pattern", "week", "match"],
+    "answer_en": "**8 cross-district MO matches** flagged this week:\n\n• Bengaluru ↔ Mysuru chain snatching (94% match) — FIR-2025-001 & FIR-2025-002\n• Mangaluru burglary cluster (89% match) — FIR-2025-004 & FIR-2025-010\n• Bengaluru burglary series (82% match) — FIR-2025-007 & FIR-2025-027\n\nRecommend reviewing **Evidence Trail** for court-ready audit logs.",
+    "answer_kn": "**8 ಅಡ್ಡ-ಜಿಲ್ಲೆ MO ಹೊಂದಾಣಿಕೆಗಳು** ಈ ವಾರ.flagged:\n\n• Bengaluru ↔ Mysuru ಸರಪಳಿ ಕದ್ದ (94%)\n• Mangaluru ದೊಂಬರಿ ಸeries (89%)",
+    "related_fir_ids": ["FIR-2025-001", "FIR-2025-002", "FIR-2025-004", "FIR-2025-010"],
+    "match_id": "MO-001"
+  },
+  {
+    "intent": "burglary_hotspot",
+    "keywords": ["burglary", "hotspot", "cluster", "jayanagar", "bengaluru"],
+    "answer_en": "**Burglary hotspot detected** in Bengaluru Urban — Jayanagar/Yelahanka/Marathahalli corridor:\n\n• 3 incidents within 2km in last 10 days\n• Common MO: daytime entry, lock picking, electronics target\n• Suspects: **Ganesh Murthy** & **Deepak Shetty** (ACC-005, ACC-006)\n\n[View on Network Graph →](/network?filter=burglary)",
+    "answer_kn": "**ದೊಂಬರಿ hotspot** Bengaluru Urban — Jayanagar/Yelahanka:\n\n• 10 ದಿನಗಳಲ್ಲಿ 2km内 3 ಘಟನೆಗಳು\n• ಸಂಶಯಿತರು: Ganesh Murthy & Deepak Shetty",
+    "related_fir_ids": ["FIR-2025-007", "FIR-2025-027", "FIR-2025-033"],
+    "match_id": "MO-005"
+  },
+  {
+    "intent": "cybercrime",
+    "keywords": ["cyber", "phishing", "upi", "online", "fraud"],
+    "answer_en": "**5 cybercrime FIRs** across Karnataka:\n\n• FIR-2025-005 — Hubballi phishing (₹85,000)\n• FIR-2025-012 — Whitefield investment scam (₹2.3L)\n• FIR-2025-019 — Belagavi UPI fraud (₹45,000)\n• FIR-2025-025 — Mysuru job scam (chargesheet filed)\n• FIR-2025-034 — Mangaluru BEC (₹5.6L)\n\nLinked accused: **Arun Desai** (ACC-007), **Vikram Patil** (ACC-008).",
+    "answer_kn": "**5 ಸೈಬರ್ ಅ преступಣೆ FIRಗಳು** Karnataka across:\n\n• Hubballi phishing — ₹85,000\n• Whitefield scam — ₹2.3L",
+    "related_fir_ids": ["FIR-2025-005", "FIR-2025-012"],
+    "match_id": null
+  },
+  {
+    "intent": "two_wheeler_theft",
+    "keywords": ["two-wheeler", "two wheeler", "bike", "scooter", "theft", "activa", "pulsar"],
+    "answer_en": "**7 two-wheeler theft cases** on record. Pattern: ignition tampering, Activa/Splendor targets.\n\nPrimary suspect: **Prakash N** (ACC-004), risk score 72, linked to 7 FIRs across 4 districts.",
+    "answer_kn": "**7 ಎರಡು-ಚಕ್ರ ವಾಹನ ಕದ್ದ ಪ್ರಕರಣಗಳು**. Ignition tampering MO.\n\nಸಂಶಯಿತ: **Prakash N** (ACC-004), ಸ್ಕೋರ್ 72.",
+    "related_fir_ids": ["FIR-2025-003", "FIR-2025-008", "FIR-2025-015"],
+    "match_id": "MO-007"
+  },
+  {
+    "intent": "default",
+    "keywords": [],
+    "answer_en": "I can help you query Karnataka crime intelligence data. Try asking about:\n\n• Chain snatching cases in Mysuru\n• Highest risk accused\n• Repeat MO patterns this week\n• Burglary hotspots in Bengaluru\n• Cybercrime trends\n\nAll answers are computed from on-platform data — no external AI calls.",
+    "answer_kn": "ನಾನು Karnataka ಅ преступಣೆ ಡೇಟಾವನ್ನು query ಮಾಡಲು ಸಹಾಯ ಮಾಡಬಲ್ಲೆ. ಕೇಳಿ:\n\n• Mysuru chain snatching\n• Highest risk accused\n• Repeat MO patterns",
+    "related_fir_ids": [],
+    "match_id": null
+  },
+  {
+    "intent": "proactive_nudge",
+    "keywords": ["__proactive__"],
+    "answer_en": "⚡ **Proactive Alert:** 3 similar burglaries within 2km in the last 10 days in Jayanagar/Yelahanka corridor — want to see the pattern?",
+    "answer_kn": "⚡ **Proactive Alert:** Jayanagar/Yelahanka corridor ನಲ್ಲಿ 10 ದಿನಗಳಲ್ಲಿ 2km内 3 ದೊಂಬರಿ — pattern ನೋಡಬೇಕೇ?",
+    "related_fir_ids": ["FIR-2025-007", "FIR-2025-027", "FIR-2025-033"],
+    "match_id": "MO-005",
+    "is_proactive": true
+  }
+]

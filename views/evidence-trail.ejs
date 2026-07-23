@@ -1,0 +1,19 @@
+<%- include('partials/head', { page: 'evidence', title: 'Evidence Trail' }) %>
+<%- include('partials/nav', { role: role || 'investigator', page }) %>
+
+<div class="page-header">
+  <div>
+    <h1>Evidence Trail</h1>
+    <span class="zoho-label">Court-Ready Audit Log — Zoho Catalyst function log</span>
+  </div>
+</div>
+
+<div id="evidence-page" class="panel evidence-panel"></div>
+
+<%- include('partials/footer', { extraScripts: `
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    loadEvidencePage('<%= matchId %>');
+  });
+</script>
+` }) %>

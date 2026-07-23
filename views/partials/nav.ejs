@@ -1,0 +1,28 @@
+<header class="top-nav">
+  <div class="nav-left">
+    <a href="/" class="logo">
+      <span class="logo-en">Sujaga</span>
+      <span class="logo-kn">ಸುಜಾಗ</span>
+    </a>
+    <span class="zoho-badge">⚡ Built on Zoho</span>
+  </div>
+  <nav class="main-nav">
+    <% if (role === 'data-entry') { %>
+      <a href="/fir/entry" class="<%= page === 'fir-entry' ? 'active' : '' %>">Data Entry</a>
+    <% } else if (role === 'investigator') { %>
+      <a href="/chat" class="<%= page === 'chat' ? 'active' : '' %>">Zia Chat</a>
+      <a href="/network" class="<%= page === 'network' ? 'active' : '' %>">Network</a>
+      <a href="/network/evidence?matchId=MO-001" class="<%= page === 'evidence' ? 'active' : '' %>">Evidence</a>
+    <% } else { %>
+      <a href="/dashboard?role=supervisor" class="<%= page === 'dashboard' ? 'active' : '' %>">Dashboard</a>
+      <a href="/hotspots?role=supervisor" class="<%= page === 'hotspots' ? 'active' : '' %>">Hotspots</a>
+      <a href="/network?role=supervisor" class="<%= page === 'network' ? 'active' : '' %>">Network</a>
+      <a href="/chat?role=supervisor" class="<%= page === 'chat' ? 'active' : '' %>">Ask Zia</a>
+    <% } %>
+    <a href="/roadmap" class="<%= page === 'roadmap' ? 'active' : '' %>">Roadmap</a>
+  </nav>
+  <div class="nav-right">
+    <span class="role-pill"><%= role.replace(/-/g, ' ') %></span>
+    <a href="/" class="btn-ghost">Switch Role</a>
+  </div>
+</header>

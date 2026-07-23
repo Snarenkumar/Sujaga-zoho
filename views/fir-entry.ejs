@@ -1,0 +1,84 @@
+<%- include('partials/head', { page: 'fir-entry', title: 'FIR Data Entry' }) %>
+<%- include('partials/nav', { role, page }) %>
+
+<div class="creator-header">
+  <span class="zoho-label">Powered by Zoho Creator + Zoho Sheet</span>
+  <span class="creator-title">FIR Registration Form</span>
+</div>
+
+<% if (success) { %>
+<div class="toast success" id="sync-toast">
+  ✓ <%= success %> <span class="zoho-flow-label">Zoho Flow — triggered</span>
+</div>
+<% } %>
+
+<% if (match) { %>
+<div class="alert-banner match-alert">
+  ⚠ This MO matches <strong>FIR <%= match.otherFirNo %></strong> filed in <%= match.otherDistrict %>, <%= match.daysAgo %> days ago
+  (<strong><%= match.similarity %>% match</strong>) —
+  <button class="link-btn" onclick="openEvidenceModal('<%= match.matchId %>')">view evidence trail</button>
+</div>
+<% } %>
+
+<div class="panel form-panel">
+  <form id="fir-form" action="/fir/entry" method="POST">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>FIR No</label>
+        <input type="text" name="fir_no" placeholder="BLR/2025/040" required>
+      </div>
+      <div class="form-group">
+        <label>Date / Time</label>
+        <input type="datetime-local" name="date_time" required>
+      </div>
+      <div class="form-group">
+        <label>District</label>
+        <select name="district" required>
+          <option value="">Select district</option>
+          <option>Bengaluru Urban</option>
+          <option>Mysuru</option>
+          <option>Mangaluru</option>
+          <option>Hubballi-Dharwad</option>
+          <option>Belagavi</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Police Station</label>
+        <input type="text" name="police_station" placeholder="Koramangala PS" required>
+      </div>
+      <div class="form-group">
+        <label>IPC Sections</label>
+        <input type="text" name="ipc_sections" placeholder="379, 392" required>
+      </div>
+      <div class="form-group">
+        <label>Crime Type</label>
+        <select name="crime_type" required>
+          <option value="">Select type</option>
+          <option>Chain Snatching</option>
+          <option>Two-Wheeler Theft</option>
+          <option>Burglary</option>
+          <option>Cybercrime</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>GPS / Location</label>
+        <input type="text" name="location_text" placeholder="Street address or landmark" required>
+      </div>
+      <div class="form-group full">
+        <label>MO Description <span class="hint">(Try: "chain snatch on black Pulsar two-wheeler" for live demo match)</span></label>
+        <textarea name="mo_description" rows="4" placeholder="Describe modus operandi in detail..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Accused Name(s)</label>
+        <input type="text" name="accused_names" placeholder="Comma-separated">
+      </div>
+      <div class="form-group">
+        <label>Victim Name(s)</label>
+        <input type="text" name="victim_names" placeholder="Comma-separated">
+      </div>
+    </div>
+    <button type="submit" class="btn-primary">Submit FIR → Run MO Match</button>
+  </form>
+</div>
+
+<%- include('partials/footer', { extraScripts: '<script src="/js/fir-entry.js"></script>' }) %>

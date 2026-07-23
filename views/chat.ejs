@@ -1,0 +1,32 @@
+<%- include('partials/head', { page: 'chat', title: 'Zia Assistant' }) %>
+<%- include('partials/nav', { role: role || 'investigator', page }) %>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <div>
+      <h1>Zia Assistant</h1>
+      <span class="zoho-label">Private, on-platform AI</span>
+    </div>
+    <div class="lang-toggle">
+      <button id="lang-en" class="active" onclick="setLang('en')">English</button>
+      <button id="lang-kn" onclick="setLang('kn')">ಕನ್ನಡ</button>
+    </div>
+  </div>
+
+  <div class="quick-questions">
+    <button onclick="askQuestion('Show chain-snatching cases in Mysuru this month')">Chain snatching in Mysuru</button>
+    <button onclick="askQuestion('Which accused have the highest risk score?')">Highest risk accused</button>
+    <button onclick="askQuestion('Any repeat MOs this week?')">Repeat MOs this week</button>
+    <button onclick="askQuestion('Burglary hotspots in Bengaluru')">Burglary hotspots</button>
+    <button onclick="askQuestion('Cybercrime trends')">Cybercrime trends</button>
+  </div>
+
+  <div id="chat-messages" class="chat-messages"></div>
+
+  <div class="chat-input-bar">
+    <input type="text" id="chat-input" placeholder="Ask Zia about cases, accused, patterns..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button class="btn-primary" onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<%- include('partials/footer', { extraScripts: '<script src="/js/chat.js"></script>' }) %>

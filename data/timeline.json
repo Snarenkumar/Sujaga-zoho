@@ -1,0 +1,47 @@
+[
+  {
+    "fir_id": "FIR-2025-001",
+    "entries": [
+      {"date": "2025-07-01", "note": "FIR registered. Victim statement recorded. CCTV footage requested from nearby shops."},
+      {"date": "2025-07-02", "note": "CCTV shows black Pulsar 150, partial plate visible. MO flagged for cross-district correlation."},
+      {"date": "2025-07-05", "note": "Linked to FIR-2025-002 (Mysuru) via Zia MO matching — 94% similarity."}
+    ]
+  },
+  {
+    "fir_id": "FIR-2025-002",
+    "entries": [
+      {"date": "2025-07-05", "note": "FIR registered at Vijayanagar PS. Victim treated for minor abrasions."},
+      {"date": "2025-07-06", "note": "Ring Road CCTV retrieved. Dark motorcycle, two riders, no helmet."},
+      {"date": "2025-07-08", "note": "Cross-district alert: matches Bengaluru chain snatching pattern."}
+    ]
+  },
+  {
+    "fir_id": "FIR-2025-004",
+    "entries": [
+      {"date": "2025-06-28", "note": "Night burglary reported. Scene secured, fingerprints lifted from window frame."},
+      {"date": "2025-06-30", "note": "Similar MO cases identified in Lalbagh Colony (FIR-2025-010)."},
+      {"date": "2025-07-03", "note": "Accused Ganesh Murthy and Deepak Shetty added to watchlist."}
+    ]
+  },
+  {
+    "fir_id": "FIR-2025-007",
+    "entries": [
+      {"date": "2025-07-12", "note": "Burglary during daytime. Neighbours confirm no suspicious activity until 11 AM."},
+      {"date": "2025-07-14", "note": "Hotspot alert: 3 burglaries within 2km in last 10 days."}
+    ]
+  },
+  {
+    "fir_id": "FIR-2025-018",
+    "entries": [
+      {"date": "2025-07-19", "note": "Early morning chain snatch. Witness provided description matching ACC-001."},
+      {"date": "2025-07-20", "note": "Lookout broadcast to Koramangala and Jayanagar PS."}
+    ]
+  },
+  {
+    "fir_id": "FIR-2025-030",
+    "entries": [
+      {"date": "2025-06-10", "note": "FIR registered. Chargesheet filed 2025-07-01."},
+      {"date": "2025-06-15", "note": "Accused Ravi Kumar M identified from prior records."}
+    ]
+  }
+]

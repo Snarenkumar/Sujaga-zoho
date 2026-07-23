@@ -1,0 +1,19 @@
+<%- include('partials/head', { page: 'hotspots', title: 'Hotspot Map', extraHead: '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">' }) %>
+<%- include('partials/nav', { role, page }) %>
+
+<div class="page-header">
+  <div>
+    <h1>Crime Hotspot Map</h1>
+    <span class="zoho-label">Zoho Analytics — Geospatial Intelligence</span>
+  </div>
+</div>
+
+<div class="map-layout">
+  <div id="map" class="map-container"></div>
+  <aside class="hotspot-sidebar panel">
+    <h3>Detected Hotspots</h3>
+    <div id="hotspot-list"></div>
+  </aside>
+</div>
+
+<%- include('partials/footer', { extraScripts: '<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="/js/hotspots.js"></script>' }) %>

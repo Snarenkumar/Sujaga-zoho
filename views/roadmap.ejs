@@ -1,0 +1,63 @@
+<%- include('partials/head', { page: 'roadmap', title: 'Roadmap' }) %>
+<%- include('partials/nav', { role: role || 'supervisor', page }) %>
+
+<div class="page-header">
+  <div>
+    <h1>Phase 2 — Future Scope</h1>
+    <span class="zoho-label">Sujaga Product Roadmap</span>
+  </div>
+</div>
+
+<div class="panel roadmap-panel">
+  <h2>Inter-State Correlation via CCTNS</h2>
+  <p class="roadmap-desc">Phase 2 extends Sujaga's MO matching and network analysis across state boundaries through the Crime and Criminal Tracking Network & Systems (CCTNS).</p>
+
+  <div class="roadmap-diagram">
+    <div class="roadmap-node central">
+      <strong>Karnataka</strong>
+      <span>Sujaga Core</span>
+      <small>CCTNS Node</small>
+    </div>
+    <div class="roadmap-arrow down">↓ MO Match Engine</div>
+    <div class="roadmap-hub">
+      <span>National CCTNS Gateway</span>
+      <small>Zoho Catalyst Integration Layer</small>
+    </div>
+    <div class="roadmap-arrow down">↓ Cross-State Correlation</div>
+    <div class="roadmap-states">
+      <div class="roadmap-node">
+        <strong>Tamil Nadu</strong>
+        <span>Chennai, Coimbatore clusters</span>
+      </div>
+      <div class="roadmap-node">
+        <strong>Telangana</strong>
+        <span>Hyderabad cybercrime link</span>
+      </div>
+      <div class="roadmap-node">
+        <strong>Maharashtra</strong>
+        <span>Mumbai-Belagavi route MOs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="roadmap-features">
+    <div class="feature-card">
+      <h4>Phase 2A</h4>
+      <p>Real-time CCTNS FIR sync via Zoho Flow</p>
+    </div>
+    <div class="feature-card">
+      <h4>Phase 2B</h4>
+      <p>Inter-state MO correlation with Zia reasoning logs</p>
+    </div>
+    <div class="feature-card">
+      <h4>Phase 2C</h4>
+      <p>Unified accused network across 4+ states</p>
+    </div>
+    <div class="feature-card">
+      <h4>Phase 3</h4>
+      <p>Predictive hotspot modeling with Zoho Analytics ML</p>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
