@@ -68,6 +68,48 @@ async function pushFirToZohoSheet(firData) {
     // IMPORTANT: never throw — this must not break the existing FIR submission flow
     return { success: false, error: err.response?.data || err.message };
   }
+async function fetchFirsFromZohoSheet() {
+  try {
+    if (!process.env.ZOHO_CLIENT_ID || !process.env.ZOHO_SHEET_ID) {
+      return null;
+    }
+    const accessToken = await getAccessToken();
+    const url = `${process.env.ZOHO_SHEET_API_DOMAIN}/api/v2/${process.env.ZOHO_SHEET_ID}`;
+    
+    const params = new URLSearchParams();
+    params.append('method', 'worksheet.records.fetch');
+    params.append('worksheet_name', process.env.ZOHO_WORKSHEET_NAME);
+
+    const response = await axios.post(url, params.toString(), {
+      headers: {
+        Authorization: `Zoho-oauthtoken ${accessToken}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+
+    if (response.data && response.data.records) {
+      return response.data.records.map((r, idx) => ({
+        id: `FIR-2025-${String(idx + 1).padStart(3, '0')}`,
+        fir_no: r.FIR_No || `FIR-2025-${idx + 1}`,
+        date_time: r.Date_Time || '2025-07-15T12:00:00',
+        district: r.District || 'Bengaluru Urban',
+        police_station: r.Police_Station || 'Central PS',
+        ipc_sections: r.IPC_Sections || '379',
+        crime_type: r.Crime_Type || 'Chain Snatching',
+        location_text: r.Location || 'City Center',
+        lat: 12.9716,
+        lng: 77.5946,
+        mo_description: r.MO_Description || '',
+        accused_ids: r.Accused_Name ? r.Accused_Name.split(', ') : [],
+        victim_ids: r.Victim_Name ? r.Victim_Name.split(', ') : [],
+        status: 'open'
+      }));
+    }
+    return null;
+  } catch (err) {
+    console.warn('[Zoho Sheet] Fetch failed, falling back to local dataset:', err.response?.data || err.message);
+    return null;
+  }
 }
 
-module.exports = { pushFirToZohoSheet };
+module.exports = { pushFirToZohoSheet, fetchFirsFromZohoSheet };
