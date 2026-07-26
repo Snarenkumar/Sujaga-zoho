@@ -1,6 +1,10 @@
-let currentLang = 'en';
+let currentLang = localStorage.getItem('sujaga_lang') || 'en';
 let messageCount = 0;
 let proactiveShown = false;
+
+window.addEventListener('languageChanged', (e) => {
+  currentLang = e.detail.lang;
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   addBotMessage(currentLang === 'kn'
@@ -9,12 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setTimeout(showProactiveNudge, 5000);
 });
-
-function setLang(lang) {
-  currentLang = lang;
-  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-  document.getElementById('lang-kn').classList.toggle('active', lang === 'kn');
-}
 
 function askQuestion(q) {
   document.getElementById('chat-input').value = q;

@@ -1,0 +1,180 @@
+<%- include('partials/head', { page: 'interstate', title: 'Inter-State Network', extraHead: '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">' }) %>
+<%- include('partials/nav', { role, page }) %>
+
+<div class="page-header">
+  <div>
+    <h1>Inter-State Intelligence Network</h1>
+    <span class="zoho-label"><i data-lucide="globe"></i> Zoho Catalyst — cross-boundary matching function (simulated)</span>
+  </div>
+  <div class="auth-badge" style="background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.3); color: var(--zoho-blue);">
+    <i data-lucide="link"></i> Simulated CCTNS Bridge
+  </div>
+</div>
+
+<div class="panel" style="margin: 0 1.5rem 1.5rem;">
+  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+    <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+      <label style="font-weight:600; font-size:0.9rem;">Select Karnataka FIR:</label>
+      <select id="fir-select" style="background:rgba(0,0,0,0.3); color:var(--text); border:1px solid var(--border); padding:0.5rem 1rem; border-radius:8px; font-family:inherit;">
+        <% localFirs.slice(0, 5).forEach(f => { %>
+          <option value="<%= f.id %>"><%= f.fir_no %> (<%= f.district %> — <%= f.crime_type %>)</option>
+        <% }) %>
+      </select>
+      <button class="btn-primary" style="margin-top:0;" onclick="runInterstateQuery()">
+        <i data-lucide="search-code"></i> Check Inter-State Matches
+      </button>
+    </div>
+    <div class="badge" style="background:rgba(56,189,248,0.1); color:var(--zoho-blue); border:1px solid rgba(56,189,248,0.3); padding:0.5rem 1rem;">
+      🔗 Simulated CCTNS Bridge — Zoho Catalyst function, same MO-fingerprinting engine, extended data scope
+    </div>
+  </div>
+</div>
+
+<div id="match-result-container" class="panel hidden" style="margin: 0 1.5rem 1.5rem; border-color: var(--zoho-red); background: rgba(244, 63, 94, 0.05);">
+  <div id="match-result-content"></div>
+</div>
+
+<div class="map-layout" style="height: 500px;">
+  <div id="interstate-map" class="map-container panel" style="padding:0; overflow:hidden;"></div>
+  <aside class="hotspot-sidebar panel" style="padding:1.5rem;">
+    <h3 style="margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+      <i data-lucide="layers"></i> Map Legend
+    </h3>
+    <div style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.85rem;">
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <span style="width:12px; height:12px; border-radius:50%; background:#38BDF8; display:inline-block;"></span>
+        <span>Karnataka Local FIRs</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <span style="width:12px; height:12px; border-radius:50%; background:#F43F5E; display:inline-block;"></span>
+        <span>Tamil Nadu (CCTNS Feed)</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <span style="width:12px; height:12px; border-radius:50%; background:#FBBF24; display:inline-block;"></span>
+        <span>Telangana (CCTNS Feed)</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <span style="width:12px; height:12px; border-radius:50%; background:#34D399; display:inline-block;"></span>
+        <span>Maharashtra (CCTNS Feed)</span>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div class="panel" style="margin: 1.5rem;">
+  <h3 style="margin-bottom:1rem;">Border State Intelligence Integration (Phase 2 Roadmap)</h3>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:1rem; margin-bottom:1.5rem;">
+    <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:1rem; border-radius:8px;">
+      <h4 style="color:var(--zoho-blue); margin-bottom:0.35rem;">Karnataka → Tamil Nadu</h4>
+      <p style="font-size:0.8rem; color:var(--text-muted);">Border coordination exists operationally; this shows the same engine extended across it.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:1rem; border-radius:8px;">
+      <h4 style="color:var(--amber); margin-bottom:0.35rem;">Karnataka → Telangana</h4>
+      <p style="font-size:0.8rem; color:var(--text-muted);">Border coordination exists operationally; this shows the same engine extended across it.</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); padding:1rem; border-radius:8px;">
+      <h4 style="color:var(--green); margin-bottom:0.35rem;">Karnataka → Maharashtra</h4>
+      <p style="font-size:0.8rem; color:var(--text-muted);">Border coordination exists operationally; this shows the same engine extended across it.</p>
+    </div>
+  </div>
+  <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+    Real inter-state data sharing requires MoU-level integration via CCTNS, which already exists nationally — Sujaga's architecture is designed to plug into it the same way it plugs into KSP's own districts. This is Phase 2 once formal data-sharing access is granted; the demo here proves the matching engine generalizes beyond a single state's data.
+  </p>
+</div>
+
+<%- include('partials/footer', { extraScripts: `
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  let map, matchPolyline;
+  const localFirs = ${JSON.stringify(localFirs)};
+  const borderFirs = ${JSON.stringify(borderFirs)};
+
+  document.addEventListener('DOMContentLoaded', () => {
+    map = L.map('interstate-map').setView([14.5, 76.5], 6);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    // Plot local FIRs
+    localFirs.forEach(f => {
+      if (f.lat && f.lng) {
+        L.circleMarker([f.lat, f.lng], {
+          radius: 6,
+          fillColor: '#38BDF8',
+          color: '#38BDF8',
+          weight: 1,
+          opacity: 0.8,
+          fillOpacity: 0.6
+        }).addTo(map).bindPopup('<b>' + f.fir_no + '</b><br>' + f.district + '<br>' + f.crime_type);
+      }
+    });
+
+    // Plot Border FIRs
+    const stateColors = { 'Tamil Nadu': '#F43F5E', 'Telangana': '#FBBF24', 'Maharashtra': '#34D399' };
+    borderFirs.forEach(f => {
+      if (f.lat && f.lng) {
+        const col = stateColors[f.state] || '#ffffff';
+        L.circleMarker([f.lat, f.lng], {
+          radius: 8,
+          fillColor: col,
+          color: col,
+          weight: 2,
+          opacity: 0.9,
+          fillOpacity: 0.7
+        }).addTo(map).bindPopup('<b>' + f.fir_no + ' (' + f.state + ')</b><br>' + f.location_text + '<br>' + f.crime_type);
+      }
+    });
+  });
+
+  function runInterstateQuery() {
+    const firId = document.getElementById('fir-select').value;
+    fetch('/api/interstate-match/' + firId)
+      .then(r => r.json())
+      .then(data => {
+        if (!data.found) return;
+
+        const container = document.getElementById('match-result-container');
+        const content = document.getElementById('match-result-content');
+        container.classList.remove('hidden');
+
+        content.innerHTML = \`
+          <div style="display:flex; justify-size:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;">
+            <div>
+              <h3 style="color:var(--zoho-red); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                <i data-lucide="alert-triangle"></i> Inter-State CCTNS Match Detected (\${data.similarity}% Similarity)
+              </h3>
+              <p style="margin-bottom:0.75rem;"><strong>\${data.reason}</strong></p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0;">
+                <div style="background:rgba(0,0,0,0.3); padding:0.75rem; border-radius:6px; border:1px solid var(--border);">
+                  <span style="font-size:0.75rem; color:var(--text-muted); display:block;">KARNATAKA FIR</span>
+                  <strong>\${data.targetFir.fir_no} (\${data.targetFir.district})</strong>
+                  <p style="font-size:0.8rem; margin-top:0.25rem;">\${data.targetFir.mo_description}</p>
+                </div>
+                <div style="background:rgba(0,0,0,0.3); padding:0.75rem; border-radius:6px; border:1px solid var(--border);">
+                  <span style="font-size:0.75rem; color:var(--zoho-red); display:block;">\${data.matchedBorderFir.state.toUpperCase()} FIR</span>
+                  <strong>\${data.matchedBorderFir.fir_no} (\${data.matchedBorderFir.district})</strong>
+                  <p style="font-size:0.8rem; margin-top:0.25rem;">\${data.matchedBorderFir.mo_description}</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button class="btn-primary" onclick="openEvidenceModal('MO-001')">View Evidence Trail</button>
+            </div>
+          </div>
+        \`;
+        if (window.lucide) lucide.createIcons();
+
+        // Draw connecting line on map
+        if (matchPolyline) map.removeLayer(matchPolyline);
+        const latlngs = [
+          [data.targetFir.lat, data.targetFir.lng],
+          [data.matchedBorderFir.lat, data.matchedBorderFir.lng]
+        ];
+        matchPolyline = L.polyline(latlngs, { color: '#F43F5E', weight: 3, dashArray: '6, 6' }).addTo(map);
+        map.fitBounds(matchPolyline.getBounds(), { padding: [50, 50] });
+      });
+  }
+</script>
+` }) %>

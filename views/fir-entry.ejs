@@ -2,13 +2,13 @@
 <%- include('partials/nav', { role, page }) %>
 
 <div class="creator-header">
-  <span class="zoho-label">Powered by Zoho Creator + Zoho Sheet</span>
+  <span class="zoho-label"><i data-lucide="layers"></i> Powered by Zoho Creator</span>
   <span class="creator-title">FIR Registration Form</span>
 </div>
 
 <% if (success) { %>
 <div class="toast success" id="sync-toast">
-  ✓ <%= success %> <span class="zoho-flow-label">Zoho Flow — triggered</span>
+  ✓ <%= success %> <span class="zoho-flow-label"><i data-lucide="zap"></i> Zoho Flow — triggered</span>
 </div>
 <% } %>
 

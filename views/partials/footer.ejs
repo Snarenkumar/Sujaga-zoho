@@ -7,7 +7,7 @@
   <div class="modal-panel">
     <div class="modal-header">
       <h2>Evidence Trail — Court-Ready Audit Log</h2>
-      <span class="zoho-label">Zoho Catalyst function log</span>
+      <span class="zoho-label"><i data-lucide="database"></i> Zoho Catalyst — function log</span>
       <button class="modal-close" onclick="closeEvidenceModal()">&times;</button>
     </div>
     <div id="evidence-content" class="modal-body"></div>
@@ -15,6 +15,11 @@
 </div>
 
 <script src="/js/common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+  });
+</script>
 <%- typeof extraScripts !== 'undefined' ? extraScripts : '' %>
 </body>
 </html>

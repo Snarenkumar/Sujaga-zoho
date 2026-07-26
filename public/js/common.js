@@ -31,14 +31,19 @@ function loadEvidencePage(matchId) {
 function renderEvidence(data) {
   const { match, fir1, fir2 } = data;
   const pct = Math.round(match.similarity_score * 100);
-  const weights = match.reasoning_weights || {};
+  const weights = data.weights || match.reasoning_weights || {};
 
   let weightsHtml = Object.entries(weights).map(([key, val]) => {
     const label = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    const pctVal = Math.round(val * 100);
-    return `<div class="weight-item">
-      <span style="min-width:160px">${label}: ${pctVal}%</span>
-      <div class="weight-bar"><div class="weight-fill" style="width:${pctVal}%"></div></div>
+    const pctVal = val; // assumed to be percentage
+    return `<div class="weight-item" style="margin-bottom:0.75rem">
+      <div style="display:flex; justify-content:space-between; font-size:0.8rem; margin-bottom:0.25rem; color:var(--text-muted)">
+        <span>${label}</span>
+        <span class="data-value" style="color:var(--zoho-blue)">${pctVal}%</span>
+      </div>
+      <div class="weight-bar" style="height:6px; background:rgba(0,0,0,0.3); border-radius:3px; overflow:hidden; border:1px solid rgba(255,255,255,0.05)">
+        <div class="weight-fill" style="width:${pctVal}%; height:100%; background:linear-gradient(90deg, var(--zoho-blue), #0ea5e9); border-radius:3px; box-shadow:0 0 8px rgba(56, 189, 248, 0.5)"></div>
+      </div>
     </div>`;
   }).join('');
 

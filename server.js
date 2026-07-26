@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Load mock data into memory
 const dataDir = path.join(__dirname, 'data');
@@ -18,6 +18,7 @@ const store = {
   timeline: loadJSON('timeline.json'),
   moMatches: loadJSON('mo_matches.json'),
   chatQna: loadJSON('chat_qna.json'),
+  borderFirs: loadJSON('border_state_firs.json'),
   sessionFirs: []
 };
 
@@ -38,6 +39,11 @@ app.use('/', require('./routes/dashboard'));
 app.use('/fir', require('./routes/fir'));
 app.use('/chat', require('./routes/chat'));
 app.use('/network', require('./routes/network'));
+app.use('/interstate', require('./routes/interstate'));
+
+app.get('/architecture', (req, res) => {
+  res.render('architecture', { role: req.query.role, page: 'architecture' });
+});
 
 // API routes
 app.get('/api/firs', (req, res) => res.json([...store.firs, ...store.sessionFirs]));
@@ -55,8 +61,35 @@ app.get('/api/evidence/:matchId', (req, res) => {
   if (!match) return res.status(404).json({ error: 'Match not found' });
   const fir1 = findFir(store, match.fir_id_1);
   const fir2 = findFir(store, match.fir_id_2);
-  res.json({ match, fir1, fir2 });
+  const weights = {
+    mo_similarity: 55,
+    location_proximity: 30,
+    time_window: 15
+  };
+  res.json({ match, fir1, fir2, weights });
 });
+app.get('/api/interstate-match/:firId', (req, res) => {
+  const targetFir = findFir(store, req.params.firId);
+  if (!targetFir) return res.status(404).json({ error: 'FIR not found' });
+  
+  // Find matching border FIR based on crime_type or MO keywords
+  let match = store.borderFirs.find(b => b.crime_type === targetFir.crime_type);
+  if (!match) match = store.borderFirs[0];
+
+  res.json({
+    found: true,
+    similarity: 91,
+    targetFir,
+    matchedBorderFir: match,
+    weights: {
+      mo_similarity: 60,
+      vehicle_match: 25,
+      time_window: 15
+    },
+    reason: `Simulated CCTNS cross-boundary fingerprint match between ${targetFir.fir_no} (${targetFir.district}) and ${match.fir_no} (${match.state})`
+  });
+});
+
 app.get('/api/stats', (req, res) => {
   const firs = [...store.firs, ...store.sessionFirs];
   const highRisk = store.accused.filter(a => a.risk_score >= 70).length;

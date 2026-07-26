@@ -19,10 +19,15 @@
       <a href="/network?role=supervisor" class="<%= page === 'network' ? 'active' : '' %>">Network</a>
       <a href="/chat?role=supervisor" class="<%= page === 'chat' ? 'active' : '' %>">Ask Zia</a>
     <% } %>
-    <a href="/roadmap" class="<%= page === 'roadmap' ? 'active' : '' %>">Roadmap</a>
+    <a href="/interstate<%= typeof role !== 'undefined' ? '?role=' + role : '' %>" class="<%= typeof page !== 'undefined' && page === 'interstate' ? 'active' : '' %>">Inter-State Network</a>
+    <a href="/architecture<%= typeof role !== 'undefined' ? '?role=' + role : '' %>" class="<%= typeof page !== 'undefined' && page === 'architecture' ? 'active' : '' %>">Architecture</a>
   </nav>
   <div class="nav-right">
-    <span class="role-pill"><%= role.replace(/-/g, ' ') %></span>
+    <div class="lang-toggle-nav">
+      <button id="nav-lang-en" class="active" onclick="setGlobalLang('en')">EN</button>
+      <button id="nav-lang-kn" onclick="setGlobalLang('kn')">ಕನ್ನಡ</button>
+    </div>
+    <span class="role-pill"><%= typeof role !== 'undefined' ? role.replace(/-/g, ' ') : 'Guest' %></span>
     <a href="/" class="btn-ghost">Switch Role</a>
   </div>
 </header>
