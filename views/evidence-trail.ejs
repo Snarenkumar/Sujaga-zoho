@@ -10,10 +10,4 @@
 
 <div id="evidence-page" class="panel evidence-panel"></div>
 
-<%- include('partials/footer', { extraScripts: `
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    loadEvidencePage('<%= matchId %>');
-  });
-</script>
-` }) %>
+<%- include('partials/footer', { extraScripts: '<script>document.addEventListener("DOMContentLoaded", () => { loadEvidencePage("' + matchId + '"); });</script>' }) %>
