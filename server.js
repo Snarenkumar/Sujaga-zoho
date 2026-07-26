@@ -12,6 +12,8 @@ function loadJSON(filename) {
   return JSON.parse(fs.readFileSync(path.join(dataDir, filename), 'utf8'));
 }
 
+const { fetchFirsFromZohoSheet } = require('./utils/zohoSheet');
+
 const store = {
   firs: loadJSON('firs.json'),
   accused: loadJSON('accused.json'),
@@ -25,13 +27,21 @@ const store = {
   sessionFirs: []
 };
 
+// Asynchronously sync live rows from Zoho Sheet at startup
+fetchFirsFromZohoSheet().then(records => {
+  if (records && records.length > 0) {
+    console.log(`[Zoho Sheet] Successfully loaded ${records.length} live FIR records into store.`);
+    store.firs = records;
+  }
+});
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   res.locals.store = store;
   res.locals.allFirs = () => [...store.firs, ...store.sessionFirs];
   next();
