@@ -3,25 +3,35 @@
 
 <div class="page-header">
   <div>
-    <h1>Inter-State Intelligence Network</h1>
+    <h1>
+      <span class="en">Inter-State Intelligence Network</span>
+      <span class="kn">ಅಂತರರಾಜ್ಯ ಗುಪ್ತಚರ ಜಾಲ</span>
+    </h1>
     <span class="zoho-label"><i data-lucide="globe"></i> Zoho Catalyst — cross-boundary matching function</span>
   </div>
   <div class="auth-badge" style="background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.3); color: var(--zoho-blue);">
-    <i data-lucide="link"></i> CCTNS Bridge
+    <i data-lucide="link"></i>
+    <span class="en">CCTNS Bridge</span>
+    <span class="kn">CCTNS ಸೇತು</span>
   </div>
 </div>
 
 <div class="panel" style="margin: 0 1.5rem 1.5rem;">
   <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
     <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
-      <label style="font-weight:600; font-size:0.9rem;">Select Karnataka FIR:</label>
+      <label style="font-weight:600; font-size:0.9rem;">
+        <span class="en">Select Karnataka FIR:</span>
+        <span class="kn">ಕರ್ನಾಟಕ ಎಫ್‌ಐಆರ್‌ ಆಯ್ಕೆ ಮಾಡಿ:</span>
+      </label>
       <select id="fir-select" style="background:rgba(0,0,0,0.3); color:var(--text); border:1px solid var(--border); padding:0.5rem 1rem; border-radius:8px; font-family:inherit;">
         <% localFirs.slice(0, 5).forEach(f => { %>
           <option value="<%= f.id %>"><%= f.fir_no %> (<%= f.district %> — <%= f.crime_type %>)</option>
         <% }) %>
       </select>
       <button class="btn-primary" style="margin-top:0;" onclick="runInterstateQuery()">
-        <i data-lucide="search-code"></i> Check Inter-State Matches
+        <i data-lucide="search-code"></i>
+        <span class="en">Check Inter-State Matches</span>
+        <span class="kn">ಅಂತರರಾಜ್ಯ ಹೊಂದಾಣಿಕೆ ಪರಿಶೀಲಿಸಿ</span>
       </button>
     </div>
     <div class="badge" style="background:rgba(56,189,248,0.1); color:var(--zoho-blue); border:1px solid rgba(56,189,248,0.3); padding:0.5rem 1rem;">

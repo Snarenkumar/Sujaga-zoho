@@ -3,7 +3,10 @@
 
 <div class="creator-header">
   <span class="zoho-label"><i data-lucide="layers"></i> Powered by Zoho Creator</span>
-  <span class="creator-title">FIR Registration Form</span>
+  <span class="creator-title">
+    <span class="en">FIR Registration Form</span>
+    <span class="kn">ಎಫ್‌ಐಆರ್ ನೋಂದಣಿ ಫಾರ್ಮ್</span>
+  </span>
 </div>
 
 <% if (success) { %>
@@ -18,7 +21,10 @@
 <div class="alert-banner match-alert">
   ⚠ This MO matches <strong>FIR <%= match.otherFirNo %></strong> filed in <%= match.otherDistrict %>, <%= match.daysAgo %> days ago
   (<strong><%= match.similarity %>% match</strong>) —
-  <button class="link-btn" onclick="openEvidenceModal('<%= match.matchId %>')">view evidence trail</button>
+  <button class="link-btn" onclick="openEvidenceModal('<%= match.matchId %>')">
+    <span class="en">view evidence trail</span>
+    <span class="kn">ಸಾಕ್ಷ್ಯ ಪಥ ನೋಡಿ</span>
+  </button>
 </div>
 <% } %>
 
@@ -27,19 +33,24 @@
   <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 1rem; margin-bottom: 1.5rem;">
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.5rem;">
       <span style="font-weight: 600; font-size: 0.9rem; color: #38BDF8; display: flex; align-items: center; gap: 6px;">
-        <i data-lucide="sparkles"></i> Live Demo Presets (One-Click Auto-Fill)
+        <i data-lucide="sparkles"></i>
+        <span class="en">Live Demo Presets (One-Click Auto-Fill)</span>
+        <span class="kn">ಲೈವ್ ಡೆಮೋ ಪ್ರಿಸೆಟ್‌ಗಳು (ಒಂದು ಕ್ಲಿಕ್‌ನಲ್ಲಿ ತುಂಬಿ)</span>
       </span>
-      <span style="font-size: 0.8rem; color: #94a3b8;">Click any preset to pre-fill the form & trigger live MO matching + Zoho Sheet write</span>
+      <span style="font-size: 0.8rem; color: #94a3b8;">
+        <span class="en">Click any preset to pre-fill the form & trigger live MO matching + Zoho Sheet write</span>
+        <span class="kn">ಯಾವುದಾದರೂ ಪ್ರಿಸೆಟ್ ಕ್ಲಿಕ್ ಮಾಡಿ — MO ಹೊಂದಾಣಿಕೆ ಮತ್ತು Zoho Sheet ಬರವಣಿಗೆ ಪ್ರಚೋದಿಸುತ್ತದೆ</span>
+      </span>
     </div>
     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
       <button type="button" class="btn-secondary" onclick="fillDemoPreset('chain')" style="font-size: 0.8rem; padding: 6px 12px; cursor: pointer;">
-        🏍️ Chain Snatching (Trigger Live Alert)
+        🏍️ <span class="en">Chain Snatching (Trigger Live Alert)</span><span class="kn">ಚೈನ್ ಕಸಿದುಕೊಳ್ಳುವಿಕೆ (ಎಚ್ಚರಿಕೆ ಪ್ರಚೋದಿಸಿ)</span>
       </button>
       <button type="button" class="btn-secondary" onclick="fillDemoPreset('burglary')" style="font-size: 0.8rem; padding: 6px 12px; cursor: pointer;">
-        🏠 Burglary MO Match
+        🏠 <span class="en">Burglary MO Match</span><span class="kn">ಕಳ್ಳತನ MO ಹೊಂದಾಣಿಕೆ</span>
       </button>
       <button type="button" class="btn-secondary" onclick="fillDemoPreset('theft')" style="font-size: 0.8rem; padding: 6px 12px; cursor: pointer;">
-        🛵 Two-Wheeler Theft
+        🛵 <span class="en">Two-Wheeler Theft</span><span class="kn">ದ್ವಿಚಕ್ರ ವಾಹನ ಕಳ್ಳತನ</span>
       </button>
     </div>
   </div>
@@ -47,17 +58,17 @@
   <form id="fir-form" action="/fir/entry" method="POST">
     <div class="form-grid">
       <div class="form-group">
-        <label>FIR No</label>
+        <label><span class="en">FIR No</span><span class="kn">ಎಫ್‌ಐಆರ್ ಸಂಖ್ಯೆ</span></label>
         <input type="text" id="input_fir_no" name="fir_no" placeholder="BLR/2025/040" required>
       </div>
       <div class="form-group">
-        <label>Date / Time</label>
+        <label><span class="en">Date / Time</span><span class="kn">ದಿನಾಂಕ / ಸಮಯ</span></label>
         <input type="datetime-local" id="input_date_time" name="date_time" required>
       </div>
       <div class="form-group">
-        <label>District</label>
+        <label><span class="en">District</span><span class="kn">ಜಿಲ್ಲೆ</span></label>
         <select id="input_district" name="district" required>
-          <option value="">Select district</option>
+          <option value="">-- <span class="en">Select district</span><span class="kn">ಜಿಲ್ಲೆ ಆಯ್ಕೆ ಮಾಡಿ</span> --</option>
           <option>Bengaluru Urban</option>
           <option>Mysuru</option>
           <option>Mangaluru</option>
@@ -66,17 +77,17 @@
         </select>
       </div>
       <div class="form-group">
-        <label>Police Station</label>
+        <label><span class="en">Police Station</span><span class="kn">ಪೊಲೀಸ್ ಠಾಣೆ</span></label>
         <input type="text" id="input_police_station" name="police_station" placeholder="Koramangala PS" required>
       </div>
       <div class="form-group">
-        <label>IPC Sections</label>
+        <label><span class="en">IPC Sections</span><span class="kn">IPC ವಿಭಾಗಗಳು</span></label>
         <input type="text" id="input_ipc_sections" name="ipc_sections" placeholder="379, 392" required>
       </div>
       <div class="form-group">
-        <label>Crime Type</label>
+        <label><span class="en">Crime Type</span><span class="kn">ಅಪರಾಧ ಪ್ರಕಾರ</span></label>
         <select id="input_crime_type" name="crime_type" required>
-          <option value="">Select type</option>
+          <option value="">-- <span class="en">Select type</span><span class="kn">ಪ್ರಕಾರ ಆಯ್ಕೆ</span> --</option>
           <option>Chain Snatching</option>
           <option>Two-Wheeler Theft</option>
           <option>Burglary</option>
@@ -84,23 +95,29 @@
         </select>
       </div>
       <div class="form-group full">
-        <label>GPS / Location</label>
+        <label><span class="en">GPS / Location</span><span class="kn">GPS / ಸ್ಥಳ</span></label>
         <input type="text" id="input_location_text" name="location_text" placeholder="Street address or landmark" required>
       </div>
       <div class="form-group full">
-        <label>MO Description <span class="hint">(Try: "chain snatch on black Pulsar two-wheeler" for live demo match)</span></label>
+        <label>
+          <span class="en">MO Description <span class="hint">(Try: "chain snatch on black Pulsar two-wheeler" for live demo match)</span></span>
+          <span class="kn">MO ವಿವರಣೆ <span class="hint">(ಡೆಮೋಗಾಗಿ: "chain snatch on black Pulsar two-wheeler" ಎಂದು ಟೈಪ್ ಮಾಡಿ)</span></span>
+        </label>
         <textarea id="input_mo_description" name="mo_description" rows="4" placeholder="Describe modus operandi in detail..." required></textarea>
       </div>
       <div class="form-group">
-        <label>Accused Name(s)</label>
+        <label><span class="en">Accused Name(s)</span><span class="kn">ಆರೋಪಿ ಹೆಸರು(ಗಳು)</span></label>
         <input type="text" id="input_accused_names" name="accused_names" placeholder="Comma-separated">
       </div>
       <div class="form-group">
-        <label>Victim Name(s)</label>
+        <label><span class="en">Victim Name(s)</span><span class="kn">ಸಂತ್ರಸ್ತ ಹೆಸರು(ಗಳು)</span></label>
         <input type="text" id="input_victim_names" name="victim_names" placeholder="Comma-separated">
       </div>
     </div>
-    <button type="submit" class="btn-primary">Submit FIR → Run Live Sync & MO Match</button>
+    <button type="submit" class="btn-primary">
+      <span class="en">Submit FIR → Run Live Sync & MO Match</span>
+      <span class="kn">ಎಫ್‌ಐಆರ್ ಸಲ್ಲಿಸಿ → ಲೈವ್ ಸಿಂಕ್ & MO ಹೊಂದಾಣಿಕೆ</span>
+    </button>
   </form>
 </div>
 

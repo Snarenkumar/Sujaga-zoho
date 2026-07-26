@@ -3,69 +3,73 @@
 
 <div class="page-header">
   <div>
-    <h1>Supervisor Command Center</h1>
+    <h1>
+      <span class="en">Supervisor Command Center</span>
+      <span class="kn">ಮೇಲ್ವಿಚಾರಕ ಕಮಾಂಡ್ ಸೆಂಟರ್</span>
+    </h1>
     <span class="zoho-label"><i data-lucide="bar-chart-3"></i> Zoho Analytics</span>
   </div>
 </div>
 
 <div class="stat-grid">
   <div class="stat-card">
-    <span class="stat-label">Total FIRs</span>
+    <span class="stat-label"><span class="en">Total FIRs</span><span class="kn">ಒಟ್ಟು ಎಫ್‌ಐಆರ್‌ಗಳು</span></span>
     <span class="stat-value"><%= stats.totalFirs %></span>
   </div>
   <div class="stat-card">
-    <span class="stat-label">Open Cases</span>
+    <span class="stat-label"><span class="en">Open Cases</span><span class="kn">ತೆರೆದ ಪ್ರಕರಣಗಳು</span></span>
     <span class="stat-value amber"><%= stats.openCases %></span>
   </div>
   <div class="stat-card">
-    <span class="stat-label">High-Risk Offenders</span>
+    <span class="stat-label"><span class="en">High-Risk Offenders</span><span class="kn">ಅಧಿಕ ಅಪಾಯದ ಅಪರಾಧಿಗಳು</span></span>
     <span class="stat-value red"><%= stats.highRiskOffenders %></span>
   </div>
   <div class="stat-card">
-    <span class="stat-label">Cross-District Matches</span>
+    <span class="stat-label"><span class="en">Cross-District Matches</span><span class="kn">ಜಿಲ್ಲಾಂತರ ಹೊಂದಾಣಿಕೆಗಳು</span></span>
     <span class="stat-value blue"><%= stats.crossDistrictMatches %></span>
   </div>
 </div>
 
 <div class="chart-grid">
   <div class="panel">
-    <h3>Crimes by Type</h3>
+    <h3><span class="en">Crimes by Type</span><span class="kn">ಪ್ರಕಾರದಿಂದ ಅಪರಾಧಗಳು</span></h3>
     <canvas id="chart-type"></canvas>
   </div>
   <div class="panel">
-    <h3>Crimes by District</h3>
+    <h3><span class="en">Crimes by District</span><span class="kn">ಜಿಲ್ಲೆಯಿಂದ ಅಪರಾಧಗಳು</span></h3>
     <canvas id="chart-district"></canvas>
   </div>
   <div class="panel wide">
-    <h3>Monthly Trend</h3>
+    <h3><span class="en">Monthly Trend</span><span class="kn">ಮಾಸಿಕ ಪ್ರವೃತ್ತಿ</span></h3>
     <canvas id="chart-trend"></canvas>
   </div>
 </div>
 
 <div class="panel" style="margin-bottom: 24px;">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-    <h3>Socio-Demographic Crime Correlation</h3>
+    <h3><span class="en">Socio-Demographic Crime Correlation</span><span class="kn">ಸಾಮಾಜಿಕ-ಜನಸಂಖ್ಯಾ ಅಪರಾಧ ಪರಸ್ಪರ ಸಂಬಂಧ</span></h3>
     <span class="zoho-label"><i data-lucide="line-chart"></i> Zoho Analytics Insights</span>
   </div>
   <div style="position: relative; width: 100%; height: 320px;">
     <canvas id="chart-socio"></canvas>
   </div>
   <p class="muted" style="margin-top: 12px; font-size: 13px; font-style: italic; color: #94a3b8;">
-    Correlating crime density with socio-economic indicators to identify root-cause risk factors, not just incident counts.
+    <span class="en">Correlating crime density with socio-economic indicators to identify root-cause risk factors, not just incident counts.</span>
+    <span class="kn">ಅಪರಾಧ ಸಾಂದ್ರತೆ ಮತ್ತು ಸಾಮಾಜಿಕ-ಆರ್ಥಿಕ ಸೂಚಕಗಳನ್ನು ಪರಸ್ಪರ ಸಂಬಂಧಿಸಿ ಮೂಲ ಅಪಾಯ ಅಂಶಗಳನ್ನು ಗುರುತಿಸಲು.</span>
   </p>
 </div>
 
 <div class="panel">
-  <h3>Risk Scoreboard</h3>
+  <h3><span class="en">Risk Scoreboard</span><span class="kn">ಅಪಾಯ ಸ್ಕೋರ್‌ಬೋರ್ಡ್</span></h3>
   <div class="table-wrap">
     <table class="data-table" id="risk-table">
       <thead>
         <tr>
-          <th data-sort="name">Accused Name</th>
-          <th data-sort="district">District</th>
-          <th data-sort="risk">Risk Score</th>
-          <th data-sort="associates">Known Associates</th>
-          <th>Linked FIRs</th>
+          <th data-sort="name"><span class="en">Accused Name</span><span class="kn">ಆರೋಪಿ ಹೆಸರು</span></th>
+          <th data-sort="district"><span class="en">District</span><span class="kn">ಜಿಲ್ಲೆ</span></th>
+          <th data-sort="risk"><span class="en">Risk Score</span><span class="kn">ಅಪಾಯ ಸ್ಕೋರ್</span></th>
+          <th data-sort="associates"><span class="en">Known Associates</span><span class="kn">ಪರಿಚಿತ ಸಹಚರರು</span></th>
+          <th><span class="en">Linked FIRs</span><span class="kn">ಸಂಬಂಧಿತ ಎಫ್‌ಐಆರ್‌ಗಳು</span></th>
         </tr>
       </thead>
       <tbody>
