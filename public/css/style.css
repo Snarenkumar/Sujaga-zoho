@@ -34,10 +34,20 @@ h1, h2, h3, h4, h5, h6, .landing-title, .role-heading, .stat-value {
 }
 
 /* Lang toggle display logic */
+/* Default: show English, hide Kannada until JS runs */
+/* Exceptions: landing-title and .logo always show both (branding) */
+.kn { display: none; }
+.en { display: inline; }
 body.lang-kn .en { display: none !important; }
-body.lang-kn .kn { display: initial !important; }
+body.lang-kn .kn { display: inline !important; }
 body.lang-en .kn { display: none !important; }
-body.lang-en .en { display: initial !important; }
+body.lang-en .en { display: inline !important; }
+/* Always show both scripts in branding/logo elements */
+.landing-title .en,
+.landing-title .kn,
+.landing-title .divider,
+.logo .logo-en,
+.logo .logo-kn { display: inline !important; }
 
 /* Global Lucide Icon alignment */
 .lucide {
