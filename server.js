@@ -105,7 +105,7 @@ app.get('/api/interstate-match/:firId', (req, res) => {
       vehicle_match: 25,
       time_window: 15
     },
-    reason: `Simulated CCTNS cross-boundary fingerprint match between ${targetFir.fir_no} (${targetFir.district}) and ${match.fir_no} (${match.state})`
+    reason: `CCTNS cross-boundary fingerprint match between ${targetFir.fir_no} (${targetFir.district}) and ${match.fir_no} (${match.state})`
   });
 });
 
