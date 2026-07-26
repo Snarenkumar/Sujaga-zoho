@@ -54,10 +54,6 @@ app.use('/chat', require('./routes/chat'));
 app.use('/network', require('./routes/network'));
 app.use('/interstate', require('./routes/interstate'));
 
-app.get('/audit-log', (req, res) => {
-  res.render('audit-log', { role: req.query.role || 'supervisor', page: 'audit-log', auditLogs: store.auditLog });
-});
-
 app.get('/architecture', (req, res) => {
   res.render('architecture', { role: req.query.role, page: 'architecture' });
 });
