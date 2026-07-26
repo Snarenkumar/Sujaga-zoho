@@ -68,6 +68,8 @@ async function pushFirToZohoSheet(firData) {
     // IMPORTANT: never throw — this must not break the existing FIR submission flow
     return { success: false, error: err.response?.data || err.message };
   }
+}
+
 async function fetchFirsFromZohoSheet() {
   try {
     if (!process.env.ZOHO_CLIENT_ID || !process.env.ZOHO_SHEET_ID) {
