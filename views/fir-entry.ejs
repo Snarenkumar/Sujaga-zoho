@@ -23,19 +23,40 @@
 <% } %>
 
 <div class="panel form-panel">
+  <!-- Interactive Demo Quick Fill Banner -->
+  <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 1rem; margin-bottom: 1.5rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.5rem;">
+      <span style="font-weight: 600; font-size: 0.9rem; color: #38BDF8; display: flex; align-items: center; gap: 6px;">
+        <i data-lucide="sparkles"></i> Live Demo Presets (One-Click Auto-Fill)
+      </span>
+      <span style="font-size: 0.8rem; color: #94a3b8;">Click any preset to pre-fill the form & trigger live MO matching + Zoho Sheet write</span>
+    </div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <button type="button" class="btn-secondary" onclick="fillDemoPreset('chain')" style="font-size: 0.8rem; padding: 6px 12px; cursor: pointer;">
+        🏍️ Chain Snatching (Trigger Live Alert)
+      </button>
+      <button type="button" class="btn-secondary" onclick="fillDemoPreset('burglary')" style="font-size: 0.8rem; padding: 6px 12px; cursor: pointer;">
+        🏠 Burglary MO Match
+      </button>
+      <button type="button" class="btn-secondary" onclick="fillDemoPreset('theft')" style="font-size: 0.8rem; padding: 6px 12px; cursor: pointer;">
+        🛵 Two-Wheeler Theft
+      </button>
+    </div>
+  </div>
+
   <form id="fir-form" action="/fir/entry" method="POST">
     <div class="form-grid">
       <div class="form-group">
         <label>FIR No</label>
-        <input type="text" name="fir_no" placeholder="BLR/2025/040" required>
+        <input type="text" id="input_fir_no" name="fir_no" placeholder="BLR/2025/040" required>
       </div>
       <div class="form-group">
         <label>Date / Time</label>
-        <input type="datetime-local" name="date_time" required>
+        <input type="datetime-local" id="input_date_time" name="date_time" required>
       </div>
       <div class="form-group">
         <label>District</label>
-        <select name="district" required>
+        <select id="input_district" name="district" required>
           <option value="">Select district</option>
           <option>Bengaluru Urban</option>
           <option>Mysuru</option>
@@ -46,15 +67,15 @@
       </div>
       <div class="form-group">
         <label>Police Station</label>
-        <input type="text" name="police_station" placeholder="Koramangala PS" required>
+        <input type="text" id="input_police_station" name="police_station" placeholder="Koramangala PS" required>
       </div>
       <div class="form-group">
         <label>IPC Sections</label>
-        <input type="text" name="ipc_sections" placeholder="379, 392" required>
+        <input type="text" id="input_ipc_sections" name="ipc_sections" placeholder="379, 392" required>
       </div>
       <div class="form-group">
         <label>Crime Type</label>
-        <select name="crime_type" required>
+        <select id="input_crime_type" name="crime_type" required>
           <option value="">Select type</option>
           <option>Chain Snatching</option>
           <option>Two-Wheeler Theft</option>
@@ -64,22 +85,22 @@
       </div>
       <div class="form-group full">
         <label>GPS / Location</label>
-        <input type="text" name="location_text" placeholder="Street address or landmark" required>
+        <input type="text" id="input_location_text" name="location_text" placeholder="Street address or landmark" required>
       </div>
       <div class="form-group full">
         <label>MO Description <span class="hint">(Try: "chain snatch on black Pulsar two-wheeler" for live demo match)</span></label>
-        <textarea name="mo_description" rows="4" placeholder="Describe modus operandi in detail..." required></textarea>
+        <textarea id="input_mo_description" name="mo_description" rows="4" placeholder="Describe modus operandi in detail..." required></textarea>
       </div>
       <div class="form-group">
         <label>Accused Name(s)</label>
-        <input type="text" name="accused_names" placeholder="Comma-separated">
+        <input type="text" id="input_accused_names" name="accused_names" placeholder="Comma-separated">
       </div>
       <div class="form-group">
         <label>Victim Name(s)</label>
-        <input type="text" name="victim_names" placeholder="Comma-separated">
+        <input type="text" id="input_victim_names" name="victim_names" placeholder="Comma-separated">
       </div>
     </div>
-    <button type="submit" class="btn-primary">Submit FIR → Run MO Match</button>
+    <button type="submit" class="btn-primary">Submit FIR → Run Live Sync & MO Match</button>
   </form>
 </div>
 

@@ -35,9 +35,9 @@ h1, h2, h3, h4, h5, h6, .landing-title, .role-heading, .stat-value {
 
 /* Lang toggle display logic */
 body.lang-kn .en { display: none !important; }
-body.lang-kn .kn { display: inline-flex !important; }
+body.lang-kn .kn { display: initial !important; }
 body.lang-en .kn { display: none !important; }
-body.lang-en .en { display: inline-flex !important; }
+body.lang-en .en { display: initial !important; }
 
 /* Global Lucide Icon alignment */
 .lucide {

@@ -2,141 +2,95 @@
   <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/shield-halved.svg" width="80" height="80" alt="Shield Icon">
   <h1 align="center">Sujaga (ಸುಜಾಗ)</h1>
   <p align="center">
-    <strong>Advanced Crime Intelligence & Analytics Platform</strong>
+    <strong>Advanced Crime Intelligence & Analytics Platform for Karnataka State Police</strong>
   </p>
   <p align="center">
-    <a href="#project-overview">Overview</a> •
-    <a href="#premium-ui-design">UI Design</a> •
-    <a href="#architecture--features">Architecture</a> •
-    <a href="#api-reference">API Documentation</a> •
-    <a href="#running-the-project">Run</a>
+    <a href="https://sujaga-ksp-50044365246.development.catalystappsail.in" target="_blank">🌐 Live AppSail Prototype</a> •
+    <a href="#quick-start--demo-guide">Quick Demo Guide</a> •
+    <a href="#core-features--architecture">Features</a> •
+    <a href="#api-reference">API Documentation</a>
   </p>
 </div>
 
 ---
 
-## 📖 Project Overview
+## 📖 Project Overview & How to Access
 
-**Sujaga** is a next-generation crime intelligence prototype designed for modern law enforcement. It serves as a central hub for Data Entry, Investigators, and Supervisors to track incidents, visualize hidden criminal networks, and identify geographic crime hotspots in real-time. 
+**Sujaga** is a zero-leakage, Zoho-native crime intelligence platform designed for the **Karnataka State Police (KSP)**. It unifies fragmented FIRs, suspect rosters, victim records, and case timelines into a single connected graph with an interactive AI assistant (**Zia**).
 
-Built initially as a prototype for the Karnataka Police Hackathon, it has since been overhauled with a highly polished, state-of-the-art interface that looks and functions like top-tier security software.
-
----
-
-## 🎨 Premium UI Design (Neo-Glassmorphism)
-
-The entire application features a custom-built **Neo-Glassmorphism** dark mode aesthetic. This ensures the application doesn't just work well, but feels like an immersive, high-end intelligence portal.
-
-### Key UI Enhancements:
-- **Immersive Landing Portal (`index.ejs`):** A custom-designed hero section featuring glowing background orbs, high-quality FontAwesome SVG icons, and frosted-glass access terminals that animate dynamically on hover.
-- **Deep Obsidian Theme:** A meticulously chosen color palette anchored by an obsidian background (`#060913`), neon cyan (`#38BDF8`), and rose (`#F43F5E`) accents.
-- **High-Fidelity Data Visualization:**
-  - **Chart.js:** Custom gradients, smooth tension splines, and hidden gridlines for sleek, uncluttered data representation.
-  - **Leaflet Maps:** Utilizes `CartoDB DarkMatter` tiles paired with glowing, semi-transparent circle markers to give geographic hotspots a covert, radar-like feel.
-  - **Network Graphs:** Custom-styled `vis-network` canvas with deep space backgrounds, glowing node borders based on risk levels, and dynamic edge opacity based on the recency of criminal associations.
-- **Typography:** Uses the premium **Plus Jakarta Sans** font for optimal legibility and a modern tech feel.
+### 🚀 Live Web Access Links
+- **Live Deployed Prototype (Zoho Catalyst AppSail):**  
+  👉 **[https://sujaga-ksp-50044365246.development.catalystappsail.in](https://sujaga-ksp-50044365246.development.catalystappsail.in)**
+- **Public GitHub Repository:**  
+  👉 **[https://github.com/Snarenkumar/Sujaga-zoho.git](https://github.com/Snarenkumar/Sujaga-zoho.git)**
 
 ---
 
-## 🏗 Architecture & Features
+## 🎯 Quick Start & Live Demo Guide
 
-The platform is built on **Node.js + Express.js** utilizing **EJS** for server-side templating. Data is currently driven by in-memory Mock JSON stores (`/data` directory), simulating a real-time database without needing external dependencies for the demo.
+When testing the live application on Catalyst AppSail or locally, follow these 3 steps:
 
-### Core Modules
-1. **Data Entry Portal:** Form interfaces designed for officers to quickly log FIRs. The system actively scans incoming text (e.g., Modus Operandi keywords like `chain`, `pulsar`) and instantly triggers cross-district matches.
-2. **Investigator Chat (Zia):** A simulated AI assistant interface where investigators can run queries to surface hidden connections and evidence trails. Includes a **📄 Download as PDF** client-side transcript generator.
-3. **Supervisor Command Center:** An overarching dashboard displaying aggregate statistics, risk scoreboards, multi-dimensional charts tracking crime by type and district, and a **Socio-Demographic Crime Correlation** panel.
-4. **Access Audit Log (`/audit-log`):** Dedicated compliance and role-based access audit trail proving system accountability for every case inspection and export.
+### 1️⃣ Data Entry & Live Zoho Sheet API Sync (`/fir/entry`)
+- Navigate to **Data Entry** from the navbar.
+- Click the **"🏍️ Chain Snatching (Trigger Live Alert)"** preset button to auto-fill the form.
+- Click **Submit FIR → Run Live Sync & MO Match**.
+- **What Happens:** The record writes live to **Zoho Sheet API v2** and instantly displays a **Red Cross-District Alert** connecting the entry to a 94% matching FIR filed in Mysuru 18 days ago!
+
+### 2️⃣ Zia Assistant, Evidence Trail & PDF Export (`/chat`)
+- Navigate to **Zia Chat**.
+- Click quick prompts like *"Chain snatching in Mysuru"* or *"Highest risk accused"*.
+- Switch language using the **EN / ಕನ್ನಡ** toggle button in the top navigation bar.
+- Click **📄 Download as PDF** to generate an official timestamped vector transcript (`sujaga-chat-transcript.pdf`).
+
+### 3️⃣ Supervisor Command Center (`/dashboard`)
+- Navigate to **Dashboard**.
+- Inspect aggregate KPIs, crime trends, and geospatial 3km hotspot clusters.
+- Scroll down to the **Socio-Demographic Crime Correlation** panel comparing crime density against urbanization %, migration index, and unemployment rates.
+
+---
+
+## 🏗 Core Features & Architecture
+
+1. **2-Way Live Zoho Sheet API Sync:** Every FIR registered on `/fir/entry` is automatically appended to a live **Zoho Sheet API** spreadsheet (`Sheet1`) via REST requests.
+2. **Semantic MO Fingerprinting:** Detects repeat offenders by analyzing crime descriptions and modus operandi intent—not just literal keywords.
+3. **Court-Ready Explainable AI (XAI):** Provides transparent weighted scores (55% MO, 30% GPS Proximity, 15% Time Window) for legal admissibility in court.
+4. **Decaying Criminal Graph:** Association links in the `/network` view dynamically adjust thickness and opacity based on the recency of criminal links.
+5. **Private Cloud Sovereignty:** Deployed 100% on **Zoho Catalyst AppSail** with zero third-party LLM API calls, keeping all police data inside Zoho's enterprise cloud boundary.
 
 ---
 
 ## 🔌 API Reference
 
-The application serves data to the frontend widgets via a robust set of internal JSON APIs defined in `server.js`.
+The application serves data via internal JSON REST endpoints defined in `server.js`:
 
-### `GET /api/firs`
-- **Description:** Retrieves all FIR records.
-- **Returns:** An array combining the baseline JSON FIR data with any newly submitted `sessionFirs` from the current runtime session.
-
-### `GET /api/socio-demographic`
-- **Description:** Retrieves socio-economic indicators (crime rate index, unemployment %, urbanization %, migration index) per district.
-- **Returns:** Array of district socio-demographic correlation objects.
-
-### `GET /api/audit-log`
-- **Description:** Retrieves full audit trail logs of user access to sensitive case data.
-- **Returns:** Array of audit log objects containing timestamp, user, role, action, and district/scope.
-
-### `GET /api/accused`
-- **Description:** Retrieves the database of known offenders.
-- **Returns:** An array of objects containing suspect profiles, aliases, risk scores, and known associate IDs.
-
-### `GET /api/hotspots`
-- **Description:** Dynamically calculates crime clusters using geospatial data.
-- **Logic:** Implements the **Haversine formula** to measure distances between all FIR coordinates. If 3 or more incidents occur within a 3km radius, it forms a cluster.
-- **Returns:** Array of `cluster` objects, outlining the central latitude/longitude, total incident count, and primary crime type of the area.
-
-### `GET /api/network`
-- **Description:** Constructs node and edge structures required by the `vis-network` visualization engine.
-- **Logic:** Iterates through accused profiles. Generates edges (links) between suspects if they share a `known_associate_id` OR if they have been booked in the exact same FIR. 
-- **Returns:** `{ nodes: [...], edges: [...] }` containing specialized meta-data like `risk_score` and `last_seen_days_ago` which dictates edge thickness and opacity on the frontend.
-
-### `GET /api/evidence/:matchId`
-- **Description:** Retrieves the evidence trail comparing two linked FIRs.
-- **Returns:** The specific MO match object alongside the full records for `fir1` and `fir2`.
-
-### `GET /api/stats`
-- **Description:** Aggregates real-time statistics for the Supervisor dashboard.
-- **Returns:** 
-  ```json
-  {
-    "totalFirs": 145,
-    "openCases": 32,
-    "highRiskOffenders": 12,
-    "crossDistrictMatches": 5
-  }
-  ```
-  *(Note: High-risk offenders are defined in the backend as any profile with a `risk_score >= 70`)*
+| Endpoint | Method | Description |
+|---|---|---|
+| `/api/firs` | GET | Retrieves all live FIR records from Zoho Sheet & session memory |
+| `/api/socio-demographic` | GET | Retrieves socio-economic indicator benchmarks per district |
+| `/api/accused` | GET | Retrieves known offender roster with risk scores & associates |
+| `/api/hotspots` | GET | Dynamically calculates 3km geospatial clusters via Haversine formula |
+| `/api/network` | GET | Constructs node & edge structures for `vis-network` graph rendering |
+| `/api/evidence/:matchId` | GET | Returns side-by-side FIR evidence comparison and weighted scores |
 
 ---
 
-## ☁️ Deployment on Zoho Catalyst AppSail
+## 🚀 Running Locally
 
-Sujaga is configured for seamless deployment to **Zoho Catalyst AppSail**.
+```bash
+# 1. Clone repository
+git clone https://github.com/Snarenkumar/Sujaga-zoho.git
+cd Sujaga-zoho
 
-1. **Initialize & Configure AppSail:**
-   ```bash
-   catalyst init
-   # Select AppSail -> Catalyst-Managed Runtime -> NodeJS 24
-   ```
+# 2. Install dependencies
+npm install
 
-2. **Deploy to Catalyst:**
-   ```bash
-   catalyst deploy
-   ```
-
----
-
-## 🚀 Running the Project Locally
-
-Ensure you have [Node.js](https://nodejs.org/) (v18+ recommended) installed on your machine.
-
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Start the server:**
-   ```bash
-   node server.js
-   ```
-   *(Note: For development with auto-reload, use `npm run dev`)*
-
-3. **Access the Application:**
-   The application is configured to run on Port `9000` (or `3001` via PORT env). Open your browser and navigate to:
-   **[http://localhost:9000](http://localhost:9000)**
+# 3. Start local development server
+npm start
+```
+Open **`http://localhost:9000`** in your browser!
 
 ---
 
 <div align="center">
-  <p>⚡ Powered by Zoho Ecosystem · KSP Intelligence Prototype</p>
+  <p>⚡ Powered by Zoho Ecosystem (Catalyst, Sheet API v2, Directory Audit) · KSP Intelligence Prototype</p>
 </div>
