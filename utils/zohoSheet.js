@@ -32,33 +32,32 @@ async function pushFirToZohoSheet(firData) {
       return { success: false, error: 'Environment variables missing' };
     }
     const accessToken = await getAccessToken();
-    const url = `${process.env.ZOHO_SHEET_API_DOMAIN}/api/v2/${process.env.ZOHO_SHEET_ID}/${process.env.ZOHO_WORKSHEET_NAME}`;
+    const url = `${process.env.ZOHO_SHEET_API_DOMAIN}/api/v2/${process.env.ZOHO_SHEET_ID}`;
 
-    const payload = {
-      method: 'worksheet.records.add',
-      worksheet_name: process.env.ZOHO_WORKSHEET_NAME,
-      data: {
-        rows: [
-          {
-            FIR_No: firData.firNo || firData.fir_no || '',
-            District: firData.district || '',
-            Police_Station: firData.policeStation || firData.police_station || '',
-            Crime_Type: firData.crimeType || firData.crime_type || '',
-            IPC_Sections: firData.ipcSections || firData.ipc_sections || '',
-            Date_Time: firData.dateTime || firData.date_time || '',
-            Location: firData.location || firData.location_text || '',
-            MO_Description: firData.moDescription || firData.mo_description || '',
-            Accused_Name: firData.accusedName || firData.accused_name || '',
-            Victim_Name: firData.victimName || firData.victim_name || ''
-          }
-        ]
+    const records = [
+      {
+        FIR_No: firData.firNo || firData.fir_no || '',
+        District: firData.district || '',
+        Police_Station: firData.policeStation || firData.police_station || '',
+        Crime_Type: firData.crimeType || firData.crime_type || '',
+        IPC_Sections: firData.ipcSections || firData.ipc_sections || '',
+        Date_Time: firData.dateTime || firData.date_time || '',
+        Location: firData.location || firData.location_text || '',
+        MO_Description: firData.moDescription || firData.mo_description || '',
+        Accused_Name: firData.accusedName || firData.accused_names || '',
+        Victim_Name: firData.victimName || firData.victim_names || ''
       }
-    };
+    ];
 
-    const response = await axios.post(url, payload, {
+    const params = new URLSearchParams();
+    params.append('method', 'worksheet.records.add');
+    params.append('worksheet_name', process.env.ZOHO_WORKSHEET_NAME);
+    params.append('json_data', JSON.stringify(records));
+
+    const response = await axios.post(url, params.toString(), {
       headers: {
         Authorization: `Zoho-oauthtoken ${accessToken}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       }
     });
 
