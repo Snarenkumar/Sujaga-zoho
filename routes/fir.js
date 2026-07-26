@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { pushFirToZohoSheet } = require('../utils/zohoSheet');
 
 const MO_TRIGGERS = ['chain', 'two-wheeler', 'pulsar', 'snatch', 'burglary', 'ignition', 'pillion'];
 
@@ -63,6 +64,16 @@ router.post('/entry', (req, res) => {
 
   store.sessionFirs.push(newFir);
 
+  // Non-blocking fire-and-forget push to Zoho Sheet
+  pushFirToZohoSheet(newFir)
+    .then(result => {
+      if (result.success) {
+        console.log('Synced to Zoho Sheet');
+      } else {
+        console.warn('Zoho Sheet sync skipped/failed, continuing normally');
+      }
+    });
+
   const moMatch = checkMoMatch(body.mo_description || '', store);
   let matchInfo = null;
 
@@ -90,7 +101,7 @@ router.post('/entry', (req, res) => {
   res.render('fir-entry', {
     role: 'data-entry',
     page: 'fir-entry',
-    success: 'Record synced successfully via Zoho Flow.',
+    success: 'Record synced successfully via Zoho Flow & Zoho Sheet.',
     match: matchInfo
   });
 });
