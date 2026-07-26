@@ -7,21 +7,13 @@
     <span class="zoho-badge">⚡ Built on Zoho</span>
   </div>
   <nav class="main-nav">
-    <% if (role === 'data-entry') { %>
-      <a href="/fir/entry" class="<%= page === 'fir-entry' ? 'active' : '' %>">Data Entry</a>
-    <% } else if (role === 'investigator') { %>
-      <a href="/chat" class="<%= page === 'chat' ? 'active' : '' %>">Zia Chat</a>
-      <a href="/network" class="<%= page === 'network' ? 'active' : '' %>">Network</a>
-      <a href="/network/evidence?matchId=MO-001" class="<%= page === 'evidence' ? 'active' : '' %>">Evidence</a>
-    <% } else { %>
-      <a href="/dashboard?role=supervisor" class="<%= page === 'dashboard' ? 'active' : '' %>">Dashboard</a>
-      <a href="/hotspots?role=supervisor" class="<%= page === 'hotspots' ? 'active' : '' %>">Hotspots</a>
-      <a href="/network?role=supervisor" class="<%= page === 'network' ? 'active' : '' %>">Network</a>
-      <a href="/chat?role=supervisor" class="<%= page === 'chat' ? 'active' : '' %>">Ask Zia</a>
-      <a href="/audit-log?role=supervisor" class="<%= page === 'audit-log' ? 'active' : '' %>">Audit Log</a>
-    <% } %>
-    <a href="/interstate<%= typeof role !== 'undefined' ? '?role=' + role : '' %>" class="<%= typeof page !== 'undefined' && page === 'interstate' ? 'active' : '' %>">Inter-State Network</a>
-    <a href="/architecture<%= typeof role !== 'undefined' ? '?role=' + role : '' %>" class="<%= typeof page !== 'undefined' && page === 'architecture' ? 'active' : '' %>">Architecture</a>
+    <a href="/fir/entry" class="<%= page === 'fir-entry' ? 'active' : '' %>">Data Entry</a>
+    <a href="/chat" class="<%= page === 'chat' ? 'active' : '' %>">Zia Chat</a>
+    <a href="/dashboard?role=supervisor" class="<%= page === 'dashboard' ? 'active' : '' %>">Dashboard</a>
+    <a href="/network" class="<%= page === 'network' ? 'active' : '' %>">Network</a>
+    <a href="/interstate" class="<%= page === 'interstate' ? 'active' : '' %>">Inter-State</a>
+    <a href="/audit-log" class="<%= page === 'audit-log' ? 'active' : '' %>">Audit Log</a>
+    <a href="/architecture" class="<%= page === 'architecture' ? 'active' : '' %>">Architecture</a>
   </nav>
   <div class="nav-right">
     <div class="lang-toggle-nav">
