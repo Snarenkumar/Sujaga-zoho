@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.X_ZOHO_CATALYST_LISTEN_PORT || process.env.PORT || 9000;
 
 // Load mock data into memory
 const dataDir = path.join(__dirname, 'data');
@@ -19,6 +19,8 @@ const store = {
   moMatches: loadJSON('mo_matches.json'),
   chatQna: loadJSON('chat_qna.json'),
   borderFirs: loadJSON('border_state_firs.json'),
+  socioDemographic: loadJSON('socio_demographic.json'),
+  auditLog: loadJSON('audit_log.json'),
   sessionFirs: []
 };
 
@@ -41,11 +43,17 @@ app.use('/chat', require('./routes/chat'));
 app.use('/network', require('./routes/network'));
 app.use('/interstate', require('./routes/interstate'));
 
+app.get('/audit-log', (req, res) => {
+  res.render('audit-log', { role: req.query.role || 'supervisor', page: 'audit-log', auditLogs: store.auditLog });
+});
+
 app.get('/architecture', (req, res) => {
   res.render('architecture', { role: req.query.role, page: 'architecture' });
 });
 
 // API routes
+app.get('/api/socio-demographic', (req, res) => res.json(store.socioDemographic));
+app.get('/api/audit-log', (req, res) => res.json(store.auditLog));
 app.get('/api/firs', (req, res) => res.json([...store.firs, ...store.sessionFirs]));
 app.get('/api/accused', (req, res) => res.json(store.accused));
 app.get('/api/hotspots', (req, res) => {

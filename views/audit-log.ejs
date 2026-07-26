@@ -1,0 +1,44 @@
+<%- include('partials/head', { page: 'audit-log', title: 'Audit Log' }) %>
+<%- include('partials/nav', { role, page }) %>
+
+<div class="page-header">
+  <div>
+    <h1>System Access & Audit Log</h1>
+    <span class="zoho-label"><i data-lucide="shield-check"></i> 🔒 Zoho Directory — Role-Based Access & Audit Trail</span>
+  </div>
+</div>
+
+<p class="muted" style="margin-bottom: 20px; font-size: 14px; color: #94a3b8;">
+  Every access to sensitive case data is logged and traceable for compliance and accountability.
+</p>
+
+<div class="panel">
+  <div class="table-wrap">
+    <table class="data-table" id="audit-table">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>User</th>
+          <th>Role</th>
+          <th>Action</th>
+          <th>District/Scope</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% auditLogs.forEach(log => {
+          const roleClass = log.role === 'Supervisor' ? 'badge-high' : log.role === 'Investigator' ? 'badge-med' : 'badge-low';
+        %>
+        <tr>
+          <td><code style="font-size: 13px; color: #38bdf8;"><%= log.timestamp %></code></td>
+          <td><strong><%= log.user %></strong></td>
+          <td><span class="badge <%= roleClass %>"><%= log.role %></span></td>
+          <td><%= log.action %></td>
+          <td><%= log.district %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/footer', { extraScripts: '' }) %>

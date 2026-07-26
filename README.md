@@ -44,8 +44,9 @@ The platform is built on **Node.js + Express.js** utilizing **EJS** for server-s
 
 ### Core Modules
 1. **Data Entry Portal:** Form interfaces designed for officers to quickly log FIRs. The system actively scans incoming text (e.g., Modus Operandi keywords like `chain`, `pulsar`) and instantly triggers cross-district matches.
-2. **Investigator Chat (Zia):** A simulated AI assistant interface where investigators can run queries to surface hidden connections and evidence trails.
-3. **Supervisor Command Center:** An overarching dashboard displaying aggregate statistics, risk scoreboards, and multi-dimensional charts tracking crime by type and district.
+2. **Investigator Chat (Zia):** A simulated AI assistant interface where investigators can run queries to surface hidden connections and evidence trails. Includes a **📄 Download as PDF** client-side transcript generator.
+3. **Supervisor Command Center:** An overarching dashboard displaying aggregate statistics, risk scoreboards, multi-dimensional charts tracking crime by type and district, and a **Socio-Demographic Crime Correlation** panel.
+4. **Access Audit Log (`/audit-log`):** Dedicated compliance and role-based access audit trail proving system accountability for every case inspection and export.
 
 ---
 
@@ -56,6 +57,14 @@ The application serves data to the frontend widgets via a robust set of internal
 ### `GET /api/firs`
 - **Description:** Retrieves all FIR records.
 - **Returns:** An array combining the baseline JSON FIR data with any newly submitted `sessionFirs` from the current runtime session.
+
+### `GET /api/socio-demographic`
+- **Description:** Retrieves socio-economic indicators (crime rate index, unemployment %, urbanization %, migration index) per district.
+- **Returns:** Array of district socio-demographic correlation objects.
+
+### `GET /api/audit-log`
+- **Description:** Retrieves full audit trail logs of user access to sensitive case data.
+- **Returns:** Array of audit log objects containing timestamp, user, role, action, and district/scope.
 
 ### `GET /api/accused`
 - **Description:** Retrieves the database of known offenders.
@@ -90,7 +99,24 @@ The application serves data to the frontend widgets via a robust set of internal
 
 ---
 
-## 🚀 Running the Project
+## ☁️ Deployment on Zoho Catalyst AppSail
+
+Sujaga is configured for seamless deployment to **Zoho Catalyst AppSail**.
+
+1. **Initialize & Configure AppSail:**
+   ```bash
+   catalyst init
+   # Select AppSail -> Catalyst-Managed Runtime -> NodeJS 24
+   ```
+
+2. **Deploy to Catalyst:**
+   ```bash
+   catalyst deploy
+   ```
+
+---
+
+## 🚀 Running the Project Locally
 
 Ensure you have [Node.js](https://nodejs.org/) (v18+ recommended) installed on your machine.
 
@@ -106,8 +132,8 @@ Ensure you have [Node.js](https://nodejs.org/) (v18+ recommended) installed on y
    *(Note: For development with auto-reload, use `npm run dev`)*
 
 3. **Access the Application:**
-   The application is configured to run on Port `3001`. Open your browser and navigate to:
-   **[http://localhost:3001](http://localhost:3001)**
+   The application is configured to run on Port `9000` (or `3001` via PORT env). Open your browser and navigate to:
+   **[http://localhost:9000](http://localhost:9000)**
 
 ---
 

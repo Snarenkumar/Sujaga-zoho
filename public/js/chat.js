@@ -86,3 +86,79 @@ function addBotMessage(text, matchId, firIds) {
   container.appendChild(div);
   container.scrollTop = container.scrollHeight;
 }
+
+function downloadChatPDF() {
+  const { jsPDF } = window.jspdf || {};
+  if (!jsPDF) {
+    alert('jsPDF library not loaded yet.');
+    return;
+  }
+
+  const doc = new jsPDF();
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 15;
+  const maxLineWidth = pageWidth - (margin * 2);
+
+  // Header
+  doc.setFontSize(16);
+  doc.setFont("helvetica", "bold");
+  doc.text("Sujaga — Chat Transcript", margin, 20);
+
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+  const now = new Date();
+  const timestampStr = `Generated on: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+  doc.text(timestampStr, margin, 27);
+
+  doc.setLineWidth(0.5);
+  doc.line(margin, 31, pageWidth - margin, 31);
+
+  let y = 40;
+
+  // Extract messages from DOM
+  const messageElements = document.querySelectorAll('#chat-messages .msg');
+
+  messageElements.forEach((el) => {
+    let sender = 'Zia';
+    if (el.classList.contains('user')) {
+      sender = 'You';
+    }
+
+    // Get text content without button texts
+    const clone = el.cloneNode(true);
+    const actions = clone.querySelector('.msg-actions');
+    if (actions) actions.remove();
+    
+    let text = clone.innerText || clone.textContent || '';
+    text = text.trim().replace(/\s+/g, ' ');
+
+    if (!text) return;
+
+    const lineText = `${sender}: ${text}`;
+    const lines = doc.splitTextToSize(lineText, maxLineWidth);
+
+    const neededHeight = lines.length * 6 + 4;
+    if (y + neededHeight > pageHeight - margin) {
+      doc.addPage();
+      y = 20;
+    }
+
+    if (sender === 'You') {
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(37, 99, 235); // Blue tint for user
+    } else {
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(30, 41, 59); // Slate dark for Zia
+    }
+
+    lines.forEach(line => {
+      doc.text(line, margin, y);
+      y += 6;
+    });
+    y += 4;
+  });
+
+  const dateStr = now.toISOString().split('T')[0];
+  doc.save(`sujaga-chat-transcript-${dateStr}.pdf`);
+}

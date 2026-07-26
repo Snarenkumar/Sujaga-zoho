@@ -5,8 +5,11 @@
   <div class="chat-header">
     <div>
       <h1>Zia Assistant</h1>
-    <span class="zoho-label"><i data-lucide="bot"></i> Zia Assistant — on-platform AI</span>
+      <span class="zoho-label"><i data-lucide="bot"></i> Zia Assistant — on-platform AI</span>
     </div>
+    <button class="btn-secondary" onclick="downloadChatPDF()" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; font-size: 13px; cursor: pointer;">
+      📄 Download as PDF
+    </button>
   </div>
 
   <div class="quick-questions">
@@ -40,4 +43,4 @@
   </div>
 </div>
 
-<%- include('partials/footer', { extraScripts: '<script src="/js/chat.js"></script><script src="/js/chat-nudge.js"></script>' }) %>
+<%- include('partials/footer', { extraScripts: '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script><script src="/js/chat.js"></script><script src="/js/chat-nudge.js"></script>' }) %>

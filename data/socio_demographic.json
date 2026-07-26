@@ -1,0 +1,7 @@
+[
+  { "district": "Bengaluru Urban", "crime_rate_index": 78, "unemployment_pct": 6.2, "urbanization_pct": 91, "migration_index": 72 },
+  { "district": "Mysuru", "crime_rate_index": 52, "unemployment_pct": 5.1, "urbanization_pct": 68, "migration_index": 45 },
+  { "district": "Mangaluru", "crime_rate_index": 40, "unemployment_pct": 4.3, "urbanization_pct": 60, "migration_index": 38 },
+  { "district": "Hubballi-Dharwad", "crime_rate_index": 47, "unemployment_pct": 5.8, "urbanization_pct": 55, "migration_index": 41 },
+  { "district": "Belagavi", "crime_rate_index": 35, "unemployment_pct": 6.5, "urbanization_pct": 48, "migration_index": 33 }
+]

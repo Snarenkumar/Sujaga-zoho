@@ -1,0 +1,18 @@
+[
+  { "timestamp": "2026-07-26 19:45", "user": "Inspector R. Kumar", "role": "Investigator", "action": "Exported Zia Chat Transcript (PDF)", "district": "Bengaluru Urban" },
+  { "timestamp": "2026-07-26 18:30", "user": "Supervisor A. Rao", "role": "Supervisor", "action": "Viewed Socio-Demographic Crime Correlation", "district": "State-wide" },
+  { "timestamp": "2026-07-26 17:15", "user": "Inspector S. Patil", "role": "Investigator", "action": "Queried Zia AI Assistant for Burglary Hotspots", "district": "Mysuru" },
+  { "timestamp": "2026-07-26 16:02", "user": "Officer M. Naik", "role": "Data Entry", "action": "Created FIR #KA-MYS-2026-0988", "district": "Mysuru" },
+  { "timestamp": "2026-07-26 15:10", "user": "Supervisor A. Rao", "role": "Supervisor", "action": "Triggered Inter-State CCTNS Match Verification", "district": "State-wide" },
+  { "timestamp": "2026-07-25 14:32", "user": "Inspector R. Kumar", "role": "Investigator", "action": "Viewed FIR #KA-BLR-2026-0512", "district": "Bengaluru Urban" },
+  { "timestamp": "2026-07-25 14:20", "user": "Supervisor A. Rao", "role": "Supervisor", "action": "Accessed Risk Scoreboard", "district": "State-wide" },
+  { "timestamp": "2026-07-25 12:40", "user": "Inspector V. Hegde", "role": "Investigator", "action": "Inspected MO Match Evidence #MO-001", "district": "Mangaluru" },
+  { "timestamp": "2026-07-25 11:15", "user": "Officer K. Swamy", "role": "Data Entry", "action": "Created FIR #KA-MNG-2026-0104", "district": "Mangaluru" },
+  { "timestamp": "2026-07-25 09:50", "user": "Supervisor A. Rao", "role": "Supervisor", "action": "Exported High-Risk Offender Roster", "district": "State-wide" },
+  { "timestamp": "2026-07-24 16:55", "user": "Inspector R. Kumar", "role": "Investigator", "action": "Visualized Gang Associate Graph", "district": "Bengaluru Urban" },
+  { "timestamp": "2026-07-24 15:12", "user": "Officer M. Naik", "role": "Data Entry", "action": "Updated Accused Record #ACC-002 (Balu)", "district": "Hubballi-Dharwad" },
+  { "timestamp": "2026-07-24 13:04", "user": "Supervisor A. Rao", "role": "Supervisor", "action": "Reviewed Hotspot Clustering Analysis", "district": "Hubballi-Dharwad" },
+  { "timestamp": "2026-07-24 10:22", "user": "Inspector S. Patil", "role": "Investigator", "action": "Viewed Inter-State FIR #MH-KLP-2026-8821", "district": "Belagavi" },
+  { "timestamp": "2026-07-23 17:45", "user": "Supervisor A. Rao", "role": "Supervisor", "action": "Accessed Architecture & Security Specs", "district": "State-wide" },
+  { "timestamp": "2026-07-23 14:18", "user": "Officer K. Swamy", "role": "Data Entry", "action": "Created FIR #KA-BEL-2026-0331", "district": "Belagavi" }
+]

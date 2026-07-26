@@ -42,6 +42,19 @@
   </div>
 </div>
 
+<div class="panel" style="margin-bottom: 24px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <h3>Socio-Demographic Crime Correlation</h3>
+    <span class="zoho-label"><i data-lucide="line-chart"></i> Zoho Analytics Insights</span>
+  </div>
+  <div style="position: relative; width: 100%; height: 320px;">
+    <canvas id="chart-socio"></canvas>
+  </div>
+  <p class="muted" style="margin-top: 12px; font-size: 13px; font-style: italic; color: #94a3b8;">
+    Correlating crime density with socio-economic indicators to identify root-cause risk factors, not just incident counts.
+  </p>
+</div>
+
 <div class="panel">
   <h3>Risk Scoreboard</h3>
   <div class="table-wrap">
@@ -147,6 +160,33 @@
     },
     options: chartOpts
   });
+
+  fetch('/api/socio-demographic')
+    .then(res => res.json())
+    .then(data => {
+      const districts = data.map(d => d.district);
+      const crimeRates = data.map(d => d.crime_rate_index);
+      const unemployment = data.map(d => d.unemployment_pct * 10); // scale up for comparative visual clarity
+      const urbanization = data.map(d => d.urbanization_pct);
+      const migration = data.map(d => d.migration_index);
+
+      new Chart(document.getElementById('chart-socio'), {
+        type: 'bar',
+        data: {
+          labels: districts,
+          datasets: [
+            { label: 'Crime Rate Index', data: crimeRates, backgroundColor: '#F43F5E', borderRadius: 4 },
+            { label: 'Urbanization %', data: urbanization, backgroundColor: '#38BDF8', borderRadius: 4 },
+            { label: 'Migration Index', data: migration, backgroundColor: '#A855F7', borderRadius: 4 },
+            { label: 'Unemployment (x10 %)', data: unemployment, backgroundColor: '#F59E0B', borderRadius: 4 }
+          ]
+        },
+        options: {
+          ...chartOpts,
+          maintainAspectRatio: false
+        }
+      });
+    });
 
   document.querySelectorAll('#risk-table th[data-sort]').forEach(th => {
     th.style.cursor = 'pointer';

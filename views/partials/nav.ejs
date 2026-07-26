@@ -18,6 +18,7 @@
       <a href="/hotspots?role=supervisor" class="<%= page === 'hotspots' ? 'active' : '' %>">Hotspots</a>
       <a href="/network?role=supervisor" class="<%= page === 'network' ? 'active' : '' %>">Network</a>
       <a href="/chat?role=supervisor" class="<%= page === 'chat' ? 'active' : '' %>">Ask Zia</a>
+      <a href="/audit-log?role=supervisor" class="<%= page === 'audit-log' ? 'active' : '' %>">Audit Log</a>
     <% } %>
     <a href="/interstate<%= typeof role !== 'undefined' ? '?role=' + role : '' %>" class="<%= typeof page !== 'undefined' && page === 'interstate' ? 'active' : '' %>">Inter-State Network</a>
     <a href="/architecture<%= typeof role !== 'undefined' ? '?role=' + role : '' %>" class="<%= typeof page !== 'undefined' && page === 'architecture' ? 'active' : '' %>">Architecture</a>
