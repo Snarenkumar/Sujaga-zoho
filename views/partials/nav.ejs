@@ -28,7 +28,7 @@
       <button id="nav-lang-en" class="active" onclick="setGlobalLang('en')">EN</button>
       <button id="nav-lang-kn" onclick="setGlobalLang('kn')">ಕನ್ನಡ</button>
     </div>
-    <span class="role-pill"><%= typeof role !== 'undefined' ? role.replace(/-/g, ' ') : 'Guest' %></span>
+    <span class="role-pill"><%= (typeof role !== 'undefined' && role) ? role.replace(/-/g, ' ') : 'Guest' %></span>
     <a href="/" class="btn-ghost">Switch Role</a>
   </div>
 </header>
