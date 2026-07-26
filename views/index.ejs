@@ -1,6 +1,7 @@
-<%- include('partials/head', { page: 'home' }) %>
+<%- include('partials/head', { page: 'home', title: 'Sujaga — Intelligence Platform' }) %>
+<%- include('partials/nav', { role: typeof role !== 'undefined' ? role : 'guest', page: 'home' }) %>
 
-<div class="landing-hero">
+<div class="landing-hero" style="min-height: calc(100vh - 70px); padding-top: 1rem;">
   <div class="glow-orb top-left"></div>
   <div class="glow-orb bottom-right"></div>
   
@@ -14,16 +15,16 @@
         <span class="divider">|</span>
         <span class="kn">ಸುಜಾಗ</span>
       </h1>
-      <p class="tagline">Advanced Crime Intelligence Platform</p>
+      <p class="tagline">Next-Generation Crime Intelligence & Analytics Platform</p>
       
-      <div class="auth-badge">
+      <div class="auth-badge" style="margin-top: 8px;">
         <i data-lucide="lock"></i>
-        <span>Zoho Directory Secure Access</span>
+        <span>🔒 Zoho Directory Secure Access & Real-Time Zoho Sheet Synchronization</span>
       </div>
     </div>
 
     <div class="role-selector">
-      <h2 class="role-heading">Select Authentication Level</h2>
+      <h2 class="role-heading">Select Role Access Level</h2>
       
       <div class="terminal-grid">
         <a href="/fir/entry" class="terminal-card">
@@ -32,14 +33,14 @@
             <i data-lucide="file-signature"></i>
           </div>
           <div class="card-content">
-            <h3>Data Entry</h3>
+            <h3>Data Entry Portal</h3>
             <p>
-              <span class="en">Register FIRs securely. Live MO matching engine triggers on submission.</span>
+              <span class="en">Register FIRs securely. Live 2-way Zoho Sheet API sync & MO matching.</span>
               <span class="kn">ಎಫ್‌ಐಆರ್ ನಮೂದಿಸಿ. ಲೈವ್ MO ಹೊಂದಾಣಿಕೆ ತಕ್ಷಣ ಪ್ರಚೋದಿಸುತ್ತದೆ.</span>
             </p>
           </div>
           <div class="card-action">
-            <span>Initialize</span> <i data-lucide="arrow-right"></i>
+            <span>Launch Entry</span> <i data-lucide="arrow-right"></i>
           </div>
         </a>
 
@@ -49,14 +50,14 @@
             <i data-lucide="search"></i>
           </div>
           <div class="card-content">
-            <h3>Investigator</h3>
+            <h3>Investigator Workspace</h3>
             <p>
-              <span class="en">Query intel with Zia Assistant. Extract criminal networks & evidence trails.</span>
+              <span class="en">Query intel with Zia Assistant (EN/KN), inspect evidence & export PDF.</span>
               <span class="kn">ಜಿಯಾ ಸಹಾಯಕನೊಂದಿಗೆ ಇಂಟೆಲ್ ಪ್ರಶ್ನಿಸಿ. ಅಪರಾಧ ಜಾಲಗಳನ್ನು ಹೊರತೆಗೆಯಿರಿ.</span>
             </p>
           </div>
           <div class="card-action">
-            <span>Initialize</span> <i data-lucide="arrow-right"></i>
+            <span>Launch Chat</span> <i data-lucide="arrow-right"></i>
           </div>
         </a>
 
@@ -68,20 +69,62 @@
           <div class="card-content">
             <h3>Supervisor Command</h3>
             <p>
-              <span class="en">Real-time analytics, dynamic risk scoreboards, and geographic hotspot intelligence.</span>
+              <span class="en">Real-time analytics, socio-demographic correlation & hotspot maps.</span>
               <span class="kn">ರಿಯಲ್-ಟೈಮ್ ಅನಾಲಿಟಿಕ್ಸ್ ಮತ್ತು ಪ್ರಾದೇಶಿಕ ಹಾಟ್‌ಸ್ಪಾಟ್ ಇಂಟೆಲಿಜೆನ್ಸ್.</span>
             </p>
           </div>
           <div class="card-action">
-            <span>Initialize</span> <i data-lucide="arrow-right"></i>
+            <span>Launch Command</span> <i data-lucide="arrow-right"></i>
           </div>
         </a>
       </div>
     </div>
+
+    <!-- How To Use Guide Section -->
+    <div style="margin-top: 3.5rem; max-width: 1100px; width: 100%; text-align: left;" class="panel">
+      <h2 style="font-size: 1.3rem; color: var(--zoho-blue); display: flex; align-items: center; gap: 8px; margin-bottom: 1.25rem;">
+        <i data-lucide="help-circle"></i> How To Explore Sujaga Prototype
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+        
+        <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border);">
+          <h4 style="color: #22C55E; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px;">
+            <span style="background: rgba(34,197,94,0.2); padding: 2px 8px; border-radius: 50%; font-size: 0.8rem;">1</span>
+            Data Entry & Live Sync
+          </h4>
+          <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
+            Go to <strong>Data Entry</strong>, enter an FIR with MO: <em>"two-wheeler chain snatching pulsar"</em>. Watch the <strong>Live Zoho Sheet API</strong> write-back and instant cross-district alert.
+          </p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border);">
+          <h4 style="color: #38BDF8; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px;">
+            <span style="background: rgba(56,189,248,0.2); padding: 2px 8px; border-radius: 50%; font-size: 0.8rem;">2</span>
+            Investigator Zia Chat & PDF
+          </h4>
+          <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
+            Open <strong>Zia Chat</strong>. Ask questions in <strong>English or Kannada</strong>. Inspect the court-ready <strong>Evidence Trail</strong> and click <strong>📄 Download as PDF</strong> to generate transcripts.
+          </p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border);">
+          <h4 style="color: #F43F5E; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px;">
+            <span style="background: rgba(244,63,94,0.2); padding: 2px 8px; border-radius: 50%; font-size: 0.8rem;">3</span>
+            Supervisor & Audit Log
+          </h4>
+          <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
+            Open <strong>Supervisor Dashboard</strong> for crime trend lines, geospatial 3km hotspots, <strong>Socio-Demographic Correlations</strong>, and inspect the <strong>Zoho Directory Audit Log</strong>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
   
-  <div class="landing-footer-note">
-    <p>⚡ Powered by Zoho Ecosystem · KSP Intelligence Prototype</p>
+  <div class="landing-footer-note" style="margin-top: 2rem;">
+    <p>⚡ Powered by Zoho Ecosystem (Catalyst, Sheet API v2, Directory Audit) · KSP Intelligence Prototype</p>
   </div>
 </div>
 
